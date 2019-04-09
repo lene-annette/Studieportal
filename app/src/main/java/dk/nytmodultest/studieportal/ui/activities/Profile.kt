@@ -3,7 +3,8 @@ package dk.nytmodultest.studieportal.ui.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import dk.nytmodultest.studieportal.R
-import dk.nytmodultest.studieportal.data.Request
+import dk.nytmodultest.studieportal.data.StudentRequest
+import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
@@ -15,11 +16,10 @@ class Profile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val url = "https://nytmodultest.dk/modultest-api/api/students/1"
         doAsync(){
-            val result = Request(url).run()
+            val result = RequestStudentCommand(1).execute()
             uiThread{
-                longToast("Request performed")
+                longToast("StudentRequest performed")
                 profileInfo.text = "Hello ${result.firstName}!"
             }
         }
