@@ -5,5 +5,5 @@ import dk.nytmodultest.studieportal.domain.model.Student
 
 class RequestStudentCommand(val id: Long, private val studentProvider: StudentProvider = StudentProvider()):
     Command<Student>{
-    override fun execute() = studentProvider.requestStudent(id)
+    override fun execute() = studentProvider.requestStudentById(id)
 }
