@@ -1,0 +1,17 @@
+package dk.nytmodultest.studieportal.data.server
+
+import dk.nytmodultest.studieportal.data.db.StudentDb
+import dk.nytmodultest.studieportal.domain.datasource.StudentDatasource
+import dk.nytmodultest.studieportal.domain.model.Student
+
+class StudentServer(
+    private val dataMapper: ServerDataMapper = ServerDataMapper(),
+    private val studentDb: StudentDb = StudentDb()): StudentDatasource {
+
+    override fun requestStudentById(id: Long): Student? {
+        val result = StudentByIdRequest(id).execute()
+        val converted = dataMapper.convertStudentToDomain(id,result)
+        studentDb.saveStudent(converted)
+        return studentDb.requestStudentById(id)
+    }
+}
