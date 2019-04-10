@@ -53,7 +53,7 @@ class Profile : AppCompatActivity() {
     fun getUsers() {
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(this)
-        val url: String = "https://api.github.com/search/users?q=eyehunt"
+        val url: String = "https://nytmodultest.dk/modultest-api/api/students/1"//"https://api.github.com/search/users?q=eyehunt"
 
         // Request a string response from the provided URL.
         val stringReq = StringRequest(Request.Method.GET, url,
@@ -61,13 +61,13 @@ class Profile : AppCompatActivity() {
 
                 var strResp = response.toString()
                 val jsonObj: JSONObject = JSONObject(strResp)
-                val jsonArray: JSONArray = jsonObj.getJSONArray("items")
+                //val jsonArray: JSONArray = jsonObj.getJSONArray("items")
                 var str_user: String = ""
-                for (i in 0 until jsonArray.length()) {
-                    var jsonInner: JSONObject = jsonArray.getJSONObject(i)
-                    str_user = str_user + "\n" + jsonInner.get("login")
-                }
-                profileInfo!!.text = "response : $str_user "
+                //for (i in 0 until jsonArray.length()) {
+                //    var jsonInner: JSONObject = jsonArray.getJSONObject(i)
+                str_user = str_user + "\n" + jsonObj.get("firstName")
+                //}
+                profileInfo!!.text = "Hello ${str_user}!"//"response : $str_user "
             },
             Response.ErrorListener { textView!!.text = "That didn't work!" })
         queue.add(stringReq)
