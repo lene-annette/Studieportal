@@ -1,4 +1,4 @@
-package dk.nytmodultest.studieportal.data
+package dk.nytmodultest.studieportal.data.server
 
 data class StudentResult(
     val firstName: String, val lastName: String,

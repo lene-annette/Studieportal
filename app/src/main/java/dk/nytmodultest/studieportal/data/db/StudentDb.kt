@@ -1,5 +1,6 @@
 package dk.nytmodultest.studieportal.data.db
 
+import dk.nytmodultest.studieportal.domain.datasource.StudentDataSource
 import dk.nytmodultest.studieportal.domain.model.Student
 import dk.nytmodultest.studieportal.extensions.clear
 import dk.nytmodultest.studieportal.extensions.parseOpt
@@ -9,15 +10,15 @@ import org.jetbrains.anko.db.select
 
 class StudentDb(
     private val studentDbHelper: StudentDbHelper = StudentDbHelper.instance,
-    private val dataMapper: DbDataMapper = DbDataMapper()){
+    private val dataMapper: DbDataMapper = DbDataMapper()): StudentDataSource{
 
-    fun requestStudentById(id: Long) = studentDbHelper.use{
+    override fun requestStudentById(id: Long) = studentDbHelper.use{
         val studentInfoRequest = "${StudentTable.ID} = ?"
         val studentInfo = select(StudentTable.NAME)
             .whereSimple(studentInfoRequest,id.toString())
             .parseOpt {StudentInfo(HashMap(it))}
 
-        if (studentInfo != null) dataMapper.convertToDomain(studentInfo)
+        if(studentInfo != null) dataMapper.convertToDomain(studentInfo) else null
     }
 
     fun saveStudent(student: Student) = studentDbHelper.use{

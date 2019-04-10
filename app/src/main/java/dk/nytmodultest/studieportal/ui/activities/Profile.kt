@@ -3,7 +3,6 @@ package dk.nytmodultest.studieportal.ui.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import dk.nytmodultest.studieportal.R
-import dk.nytmodultest.studieportal.data.StudentRequest
 import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.doAsync
@@ -19,7 +18,7 @@ class Profile : AppCompatActivity() {
         doAsync(){
             val result = RequestStudentCommand(1).execute()
             uiThread{
-                longToast("StudentRequest performed")
+                longToast("StudentByIdRequest performed")
                 profileInfo.text = "Hello ${result.firstName}!"
             }
         }
