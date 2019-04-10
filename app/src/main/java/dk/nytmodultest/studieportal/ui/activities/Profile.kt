@@ -5,18 +5,27 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import dk.nytmodultest.studieportal.R
-import dk.nytmodultest.studieportal.data.Request
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
+
+import android.widget.TextView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONArray
+import org.json.JSONObject
 
 class Profile : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        getUsers()
 
+        /*
         val url = "https://nytmodultest.dk/modultest-api/api/students/1"
 
         doAsync(){
@@ -27,17 +36,9 @@ class Profile : AppCompatActivity() {
                 //globalResult = result
             }
         }
-
-
-        //listeningBtn.setOnClickListener {
-        //    startActivity(Intent(this, Listening::class.java))
-        //}
-
-        /*
-        val intent = Intent(this@HomeActivity,ProfileActivity::class.java)
-        intent.putExtra("Username","John Doe")
-        startActivity(intent)
         */
+
+
 
         // find the botton to the listening page
         val listeningBtn = findViewById(R.id.listeningBtn)as Button
@@ -47,5 +48,28 @@ class Profile : AppCompatActivity() {
             startActivity(listeningIntent)
         }
 
+    }
+
+    fun getUsers() {
+        // Instantiate the RequestQueue.
+        val queue = Volley.newRequestQueue(this)
+        val url: String = "https://api.github.com/search/users?q=eyehunt"
+
+        // Request a string response from the provided URL.
+        val stringReq = StringRequest(Request.Method.GET, url,
+            Response.Listener<String> { response ->
+
+                var strResp = response.toString()
+                val jsonObj: JSONObject = JSONObject(strResp)
+                val jsonArray: JSONArray = jsonObj.getJSONArray("items")
+                var str_user: String = ""
+                for (i in 0 until jsonArray.length()) {
+                    var jsonInner: JSONObject = jsonArray.getJSONObject(i)
+                    str_user = str_user + "\n" + jsonInner.get("login")
+                }
+                profileInfo!!.text = "response : $str_user "
+            },
+            Response.ErrorListener { textView!!.text = "That didn't work!" })
+        queue.add(stringReq)
     }
 }
