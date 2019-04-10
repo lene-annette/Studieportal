@@ -33,10 +33,18 @@ class Profile : AppCompatActivity() {
         //    startActivity(Intent(this, Listening::class.java))
         //}
 
+        /*
+        val intent = Intent(this@HomeActivity,ProfileActivity::class.java)
+        intent.putExtra("Username","John Doe")
+        startActivity(intent)
+        */
+
         // find the botton to the listening page
         val listeningBtn = findViewById(R.id.listeningBtn)as Button
+        val listeningIntent = Intent(this, Listening::class.java)
+        listeningIntent.putExtra("Username", "john doe")
         listeningBtn.setOnClickListener{
-            startActivity(Intent(this, Listening::class.java))
+            startActivity(listeningIntent)
         }
 
     }
