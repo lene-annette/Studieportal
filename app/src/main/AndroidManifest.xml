@@ -17,10 +17,12 @@
         <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        
+        <!-- Authenticator related activities -->
+        <activity android:name="dk.nytmodultest.myauthenticator"
     </application>
 
 </manifest>
