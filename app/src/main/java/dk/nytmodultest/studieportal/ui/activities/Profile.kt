@@ -1,5 +1,6 @@
 package dk.nytmodultest.studieportal.ui.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import dk.nytmodultest.studieportal.R
@@ -21,6 +22,10 @@ class Profile : AppCompatActivity() {
                 longToast("StudentByIdRequest performed")
                 profileInfo.text = "Hello ${result.firstName}!"
             }
+        }
+
+        toListeningBtn.setOnClickListener{
+            startActivity(Intent(this, Listening::class.java))
         }
     }
 }
