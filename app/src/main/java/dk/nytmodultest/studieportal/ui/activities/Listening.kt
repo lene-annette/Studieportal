@@ -11,4 +11,15 @@ class Listening : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listening)
     }
+
+    /*
+    doAsync(){
+            val result = RequestStudentCommand(1).execute()
+            uiThread{
+                longToast("StudentByIdRequest performed")
+                profileInfo.text = "Hello ${result.firstName}!"
+            }
+        }
+    */
+
 }
