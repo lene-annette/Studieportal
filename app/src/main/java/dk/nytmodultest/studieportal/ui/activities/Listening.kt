@@ -1,7 +1,6 @@
 package dk.nytmodultest.studieportal.ui.activities
 
 //import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
-import dk.nytmodultest.studieportal.domain.commands.RequestMultiChoiceCommand
 import kotlinx.android.synthetic.main.activity_listening.*
 import android.os.Bundle
 import org.jetbrains.anko.doAsync
@@ -9,6 +8,7 @@ import org.jetbrains.anko.uiThread
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import dk.nytmodultest.studieportal.R
+import dk.nytmodultest.studieportal.domain.commands.RequestMultiChoiceCommand
 
 class Listening : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +16,7 @@ class Listening : AppCompatActivity(){
         setContentView(R.layout.activity_listening)
 
         doAsync(){
-            val result = "hello world - studieprotal"//RequestMultiChoiceCommand.execute()
+            val result = RequestMultiChoiceCommand().execute()
             uiThread{
                 act_textcontent.text = "${result}"
             }
