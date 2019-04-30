@@ -10,7 +10,8 @@ import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.commands.RequestMultiChoiceCommand
-import java.lang.Exception
+import java.net.URL
+import kotlin.Exception
 
 class Listening : AppCompatActivity(){
 
@@ -20,24 +21,31 @@ class Listening : AppCompatActivity(){
         }
 
         override fun doInBackground(vararg params: String?): String {
-            //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            var i = 0
-            while(i<=10){
-                try{
-                    Thread.sleep(1000)
-                    publishProgress(i)
-                    i++
-                }catch(e:Exception){
-                    return(e.localizedMessage)
-                }
+            try{
+                return URL("http://headers.jsontest.com/").readText()
+                //java.net.MalformedURLException: unknown protocol: localhost
+                //return URL("localhost:8000/api/findQuestionsByExerciseId/1").readText()
+            } catch (e: Exception) {
+                return e.toString()
             }
-            return "Button Pressed"
+
+            //var i = 0
+            //while(i<=10){
+            //    try{
+            //        Thread.sleep(1000)
+            //        publishProgress(i)
+            //       i++
+            //    }catch(e:Exception){
+            //        return(e.localizedMessage)
+            //    }
+            //}
+            //return json//"Button Pressed"
         }
 
         override fun onProgressUpdate(vararg values: Int?) {
             super.onProgressUpdate(*values)
-            val counter = values.get(0)
-            act_textcontent.text = "counter = ${counter}"
+            //val counter = values.get(0)
+            //act_textcontent.text = "counter = ${counter}"
         }
 
         override fun onPostExecute(result: String?) {
