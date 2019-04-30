@@ -11,6 +11,7 @@ import dk.nytmodultest.studieportal.domain.model.IdToken
 import dk.nytmodultest.studieportal.extensions.DelegatesExt
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -30,15 +31,23 @@ class MainActivity : AppCompatActivity() {
         }else{
             startActivity(Intent(this, ProfileActivity::class.java))
         }
-        
+
         loginBtn.setOnClickListener {
+            val email = loginEmail.text.toString()
+            val password = loginPsw.text.toString()
+
             doAsync() {
-                val result: IdToken = LoginCommand("donald@trump.com","123").execute()
+                val result: IdToken = LoginCommand(email,password).execute()
                 uiThread{
-                    idToken = result.token
+                    if(result.success){
+                        idToken = result.token
+                        startActivity(Intent(it,ProfileActivity::class.java))
+                    }else{
+                        longToast("Wrong username or password")
+                    }
                 }
             }
-            startActivity(Intent(this, ProfileActivity::class.java))
+            //startActivity(Intent(this,ProfileActivity::class.java))
         }
     }
 }
