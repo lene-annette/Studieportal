@@ -1,6 +1,7 @@
 package dk.nytmodultest.studieportal.ui.activities
 
 //import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
+import dk.nytmodultest.studieportal.domain.model.*
 import android.os.AsyncTask
 import kotlinx.android.synthetic.main.activity_listening.*
 import android.os.Bundle
@@ -8,6 +9,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
+import android.text.method.ScrollingMovementMethod
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.commands.RequestMultiChoiceCommand
@@ -31,8 +33,8 @@ class Listening : AppCompatActivity(){
                 return "Database error"
             }
 
-            //val article = Gson().fromJson(databaseGet, Article::class.java)
-            return databaseGet
+            val article = Gson().fromJson(databaseGet, Exercise::class.java)
+            return article.toString()
         }
 
         override fun onProgressUpdate(vararg values: Int?) {
@@ -47,10 +49,13 @@ class Listening : AppCompatActivity(){
 
     }
 
+    //TextView textView = (TextView) findViewById(R.id.text_view);
+    //textView.setMovementMethod(new ScrollingMovementMethod());
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listening)
-
+        act_textcontent.setMovementMethod(ScrollingMovementMethod());
         GetListeningExercise().execute()
 
     }
