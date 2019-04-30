@@ -8,6 +8,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
+import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.commands.RequestMultiChoiceCommand
 import java.net.URL
@@ -15,42 +16,33 @@ import kotlin.Exception
 
 class Listening : AppCompatActivity(){
 
-    private inner class MyTask: AsyncTask<String, Int, String>(){
+    private inner class GetListeningExercise: AsyncTask<String, Int, String>(){
         override fun onPreExecute() {
             super.onPreExecute()
         }
 
         override fun doInBackground(vararg params: String?): String {
+            val databaseGet: String
             try{
-                return URL("http://headers.jsontest.com/").readText()
-                //java.net.MalformedURLException: unknown protocol: localhost
-                //return URL("localhost:8000/api/findQuestionsByExerciseId/1").readText()
+                //use "10.0.2.2" instead of localhost (ottherwise you get an exception)
+                databaseGet =  URL("http://10.0.2.2:8000/api/findQuestionsByExerciseId/1").readText()
             } catch (e: Exception) {
-                return e.toString()
+                //return e.toString()
+                return "Database error"
             }
 
-            //var i = 0
-            //while(i<=10){
-            //    try{
-            //        Thread.sleep(1000)
-            //        publishProgress(i)
-            //       i++
-            //    }catch(e:Exception){
-            //        return(e.localizedMessage)
-            //    }
-            //}
-            //return json//"Button Pressed"
+            //val article = Gson().fromJson(databaseGet, Article::class.java)
+            return databaseGet
         }
 
         override fun onProgressUpdate(vararg values: Int?) {
             super.onProgressUpdate(*values)
-            //val counter = values.get(0)
-            //act_textcontent.text = "counter = ${counter}"
         }
 
         override fun onPostExecute(result: String?) {
             //super.onPostExecute(result)
-            act_textcontent.text = "${result}"
+            val myresult = result
+            act_textcontent.text = "${myresult}"
         }
 
     }
@@ -58,20 +50,9 @@ class Listening : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listening)
-        //for at få indhold:
-        //val task = MyTask().execute()
-        MyTask().execute()
 
+        GetListeningExercise().execute()
 
-
-        /*
-        doAsync(){
-            val result = RequestMultiChoiceCommand().execute()
-            uiThread{
-                act_textcontent.text = "${result}"
-            }
-        }
-        */
     }
 
 
