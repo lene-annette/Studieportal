@@ -1,6 +1,5 @@
 package dk.nytmodultest.studieportal.data.server
 
-import android.util.Log.d
 import com.google.gson.Gson
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -8,7 +7,6 @@ import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
-import java.net.URLConnection
 
 class LoginRequest(private val email:String, private val password: String, val gson: Gson = Gson()){
     companion object{
@@ -53,11 +51,7 @@ class LoginRequest(private val email:String, private val password: String, val g
                 }
 
             }
-
-        d("Lene", "response: " + response)
-
         return gson.fromJson(response, IdTokenResult::class.java)
     }
-
 }
 

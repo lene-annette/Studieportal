@@ -30,19 +30,15 @@ class MainActivity : AppCompatActivity() {
         }else{
             startActivity(Intent(this, ProfileActivity::class.java))
         }
-
-
-
+        
         loginBtn.setOnClickListener {
             doAsync() {
                 val result: IdToken = LoginCommand("donald@trump.com","123").execute()
                 uiThread{
                     idToken = result.token
-                    d("Lene", "Token: " + idToken)
                 }
             }
             startActivity(Intent(this, ProfileActivity::class.java))
-
         }
     }
 }
