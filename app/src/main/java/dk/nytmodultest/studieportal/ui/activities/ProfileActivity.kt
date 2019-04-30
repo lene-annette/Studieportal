@@ -1,5 +1,7 @@
 package dk.nytmodultest.studieportal.ui.activities
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import dk.nytmodultest.studieportal.R
@@ -12,7 +14,9 @@ import org.jetbrains.anko.uiThread
 
 class ProfileActivity : AppCompatActivity() {
 
-    private val userId: Long
+    private var idToken: String
+            by DelegatesExt.preference(this, MainActivity.ID_TOKEN, MainActivity.DEFAULT_TOKEN)
+    private var userId: Long
             by DelegatesExt.preference(this, MainActivity.USER_ID, MainActivity.DEFAULT_ID)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +29,13 @@ class ProfileActivity : AppCompatActivity() {
                 longToast("StudentByIdRequest performed")
                 profileInfo.text = "Hello ${result.firstName}!"
             }
+        }
+
+        logoutBtn.setOnClickListener{
+            userId = MainActivity.DEFAULT_ID
+            idToken = MainActivity.DEFAULT_TOKEN
+
+            startActivity(Intent(this,MainActivity::class.java))
         }
     }
 }
