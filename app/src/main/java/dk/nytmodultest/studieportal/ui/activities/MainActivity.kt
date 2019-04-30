@@ -8,6 +8,7 @@ import android.util.Log.d
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.commands.LoginCommand
 import dk.nytmodultest.studieportal.domain.model.IdToken
+import dk.nytmodultest.studieportal.extensions.Decoder
 import dk.nytmodultest.studieportal.extensions.DelegatesExt
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
@@ -18,10 +19,15 @@ class MainActivity : AppCompatActivity() {
     companion object{
         const val ID_TOKEN = "idToken"
         const val DEFAULT_TOKEN = "none"
+        const val USER_ID = "userId"
+        const val DEFAULT_ID: Long = 0
     }
 
     private var idToken: String
         by DelegatesExt.preference(this,ID_TOKEN,DEFAULT_TOKEN)
+
+    private var userId: Long
+        by DelegatesExt.preference(this, USER_ID, DEFAULT_ID)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +47,14 @@ class MainActivity : AppCompatActivity() {
                 uiThread{
                     if(result.success){
                         idToken = result.token
+                        d("Lene","Token: " + idToken)
+                        userId = Decoder(idToken).decode()
                         startActivity(Intent(it,ProfileActivity::class.java))
                     }else{
                         longToast("Wrong username or password")
                     }
                 }
             }
-            //startActivity(Intent(this,ProfileActivity::class.java))
         }
     }
 }
