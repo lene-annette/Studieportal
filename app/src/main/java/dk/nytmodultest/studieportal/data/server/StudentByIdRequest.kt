@@ -15,6 +15,5 @@ class StudentByIdRequest(private val id: Long, val gson: Gson = Gson()) {
     fun execute(): StudentResult {
         val studentJsonStr = URL(COMPLETE_URL + id).readText()
         return gson.fromJson(studentJsonStr, StudentResult::class.java)
-
     }
 }

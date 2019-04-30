@@ -6,3 +6,7 @@ data class StudentResult(
     val phoneNr: String, val citizenship: String,
     val last5yCountry: String, val birthCountry: String,
     val motherTongue: String)
+
+data class IdTokenResult(
+    val success: Boolean, val token: String, val message:String
+)
