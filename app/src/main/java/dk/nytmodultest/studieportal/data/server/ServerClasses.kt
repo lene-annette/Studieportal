@@ -8,5 +8,15 @@ data class StudentResult(
     val motherTongue: String)
 
 data class IdTokenResult(
-    val success: Boolean, val token: String, val message:String
-)
+    val success: Boolean, val token: String = "none", val message:String
+){
+    constructor(
+        success: Boolean? = null,
+        token: String? = null,
+        message: String? = null
+    ) : this(
+        success ?: false,
+        token ?: "none",
+        message ?: "something went wrong"
+    )
+}
