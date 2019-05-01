@@ -70,10 +70,68 @@ class Listening : AppCompatActivity(){
         setContentView(R.layout.activity_listening)
         //act_textcontent.setMovementMethod(ScrollingMovementMethod());
         //val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-
-
-
         GetListeningExercise().execute()
+
+        val recyclerView = findViewById(R.id.XML_RW_questions) as RecyclerView
+        //recyclerView.layoutManager = LinearLayoutManager(this@Listening, LinearLayout.VERTICAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+
+        val possibleanswers = ArrayList<PossibleAnswers>()
+        possibleanswers.add(PossibleAnswers("(answerText1)"))
+        possibleanswers.add(PossibleAnswers("(answerText2)"))
+        possibleanswers.add(PossibleAnswers("(answerText3)"))
+
+        val users = ArrayList<Questions>()
+        users.add(Questions(
+            1,
+            10,
+            "Hvad er...(id 1, exerciseId 10)",
+            0,
+            5,
+            "(guidelines)",
+            "(media)",
+            "(mediaType)",
+            "(correctAnswer)",
+            "(type)",
+            "(createdAt)",
+            "(updatedAt)",
+            possibleanswers
+        ))
+                users.add(Questions(
+                2,
+                20,
+                "Hvad er...(id 2, exerciseId 20)",
+                0,
+                5,
+                "(guidelines)",
+                "(media)",
+                "(mediaType)",
+                "(correctAnswer)",
+                "(type)",
+                "(createdAt)",
+                "(updatedAt)",
+                possibleanswers
+            ))
+        users.add(Questions(
+                3,
+                30,
+                "Hvad er...(id 3, exerciseId 30)",
+                0,
+                5,
+                "(guidelines)",
+                "(media)",
+                "(mediaType)",
+                "(correctAnswer)",
+                "(type)",
+                "(createdAt)",
+                "(updatedAt)",
+                possibleanswers
+            ))
+
+
+
+        val adapter = CustomAdapter(users)
+        recyclerView.adapter = adapter
 
     }
 

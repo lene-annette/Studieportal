@@ -45,10 +45,15 @@ data class Questions (
     val type : String,
     val createdAt : String,
     val updatedAt : String,
-    val possibleAnswers : List<PossibleAnswers>
+    val possibleAnswers : ArrayList<PossibleAnswers>
 )
 
 data class PossibleAnswers (
 
     val answerText : String
+)
+
+data class dommyQuestions(
+    val question : String,
+    val possibleAnswers : List<PossibleAnswers>
 )

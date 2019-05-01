@@ -8,7 +8,7 @@ import android.widget.TextView
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.model.Questions
 
-class CustomAdapter(val userList: List<Questions>) :
+class CustomAdapter(val userList: ArrayList<Questions>) :
         RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
