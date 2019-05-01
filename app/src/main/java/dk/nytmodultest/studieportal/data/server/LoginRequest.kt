@@ -1,5 +1,6 @@
 package dk.nytmodultest.studieportal.data.server
 
+import android.util.Log.d
 import com.google.gson.Gson
 import org.json.JSONObject
 import java.io.BufferedReader

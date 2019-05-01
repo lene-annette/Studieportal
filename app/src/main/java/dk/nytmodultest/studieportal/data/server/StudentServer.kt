@@ -1,5 +1,6 @@
 package dk.nytmodultest.studieportal.data.server
 
+import android.util.Log.d
 import dk.nytmodultest.studieportal.data.db.StudentDb
 import dk.nytmodultest.studieportal.domain.datasource.StudentDataSource
 import dk.nytmodultest.studieportal.domain.model.IdToken
@@ -18,6 +19,8 @@ class StudentServer(
 
     override fun login(email: String, password: String): IdToken {
         val result = LoginRequest(email, password).execute()
+        //This works, but produce an compiler warning. Code able to run anyway
+        if(result.token == null) result.token = "none"
         return dataMapper.convertToken(result)
     }
 }
