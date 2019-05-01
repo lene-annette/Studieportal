@@ -6,6 +6,7 @@ import android.os.AsyncTask
 import kotlinx.android.synthetic.main.activity_listening.*
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import java.net.URL
@@ -46,6 +47,7 @@ class Listening : AppCompatActivity(){
             XMLmedia.text = media
             XMLstudentIns.text = studentInstructions
             //act_textcontent.text = "${myresult}"
+
         }
 
     }
@@ -57,6 +59,7 @@ class Listening : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listening)
         //act_textcontent.setMovementMethod(ScrollingMovementMethod());
+        //val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         GetListeningExercise().execute()
 
     }
