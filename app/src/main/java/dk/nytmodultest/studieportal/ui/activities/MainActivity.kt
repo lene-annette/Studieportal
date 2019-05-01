@@ -13,6 +13,7 @@ import dk.nytmodultest.studieportal.extensions.DelegatesExt
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -43,18 +44,23 @@ class MainActivity : AppCompatActivity() {
             val password = loginPsw.text.toString()
 
             doAsync() {
-                val result: IdToken = LoginCommand(email,password).execute()
-                uiThread{
-                    if(result.success){
+                val result: IdToken = LoginCommand(email, password).execute()
+                uiThread {
+                    if (result.success) {
                         idToken = result.token
-                        d("Lene","Token: " + idToken)
+                        d("Lene", "Token: " + idToken)
                         userId = Decoder(idToken).decode()
-                        startActivity(Intent(it,ProfileActivity::class.java))
-                    }else{
+                        startActivity(Intent(it, ProfileActivity::class.java))
+                    } else {
                         longToast("Wrong username or password")
                     }
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

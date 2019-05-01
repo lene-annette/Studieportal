@@ -34,8 +34,8 @@ class ProfileActivity : AppCompatActivity() {
         logoutBtn.setOnClickListener{
             userId = MainActivity.DEFAULT_ID
             idToken = MainActivity.DEFAULT_TOKEN
-
-            startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
     }
+
 }
