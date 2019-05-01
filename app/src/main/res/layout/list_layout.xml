@@ -16,35 +16,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+            <!--android:id="@+id/XMLeachquestiontext"-->
             <TextView
                     android:layout_margin="5dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:id="@+id/XMLeachquestiontext"
+                    android:id="@+id/textViewName"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    android:text="XMLeachquestiontext"/>
+                    android:text="textViewName"/>
             <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+                <!--android:id="@+id/XMLoption1"-->
                 <RadioButton
                         android:layout_margin="5dp"
                         android:text="XMLoption1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/XMLoption1"/>
+                        android:id="@+id/textViewAddress1"/>
+                <!--android:id="@+id/XMLoption2"-->
                 <RadioButton
                         android:layout_margin="5dp"
                         android:text="XMLoption2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/XMLoption2"/>
+                        android:id="@+id/textViewAddress2"/>
+                <!--android:id="@+id/XMLoption3"-->
                 <RadioButton
                         android:layout_margin="5dp"
                         android:text="XMLoption3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/XMLoption3"/>
+                        android:id="@+id/textViewAddress3"/>
             </RadioGroup>
 
 
