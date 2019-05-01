@@ -17,7 +17,7 @@ class StudentDb(
     }
 
     override fun requestStudentById(id: Long) = studentDbHelper.use{
-        val studentInfoRequest = "${StudentTable.ID} = ?"
+        val studentInfoRequest = "${StudentTable.STUDENTID} = ?"
         val studentInfo = select(StudentTable.NAME)
             .whereSimple(studentInfoRequest,id.toString())
             .parseOpt {StudentInfo(HashMap(it))}

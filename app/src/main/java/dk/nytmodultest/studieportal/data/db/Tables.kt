@@ -4,6 +4,7 @@ package dk.nytmodultest.studieportal.data.db
 object StudentTable {
     const val NAME = "StudentInfo"
     const val ID = "_id"
+    const val STUDENTID = "id"
     const val FIRSTNAME = "firstName"
     const val LASTNAME = "lastName"
     const val USERNAME = "userName"

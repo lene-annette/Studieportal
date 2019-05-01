@@ -1,6 +1,7 @@
 package dk.nytmodultest.studieportal.data.server
 
 data class StudentResult(
+    val id: Long,
     val firstName: String, val lastName: String,
     val userName: String, val email: String,
     val phoneNr: String, val citizenship: String,

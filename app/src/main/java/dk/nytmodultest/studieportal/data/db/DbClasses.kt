@@ -2,6 +2,7 @@ package dk.nytmodultest.studieportal.data.db
 
 class StudentInfo(var map: MutableMap<String, Any?>){
     var _id: Long by map
+    var id: Long by map
     var firstName: String by map
     var lastName: String by map
     var userName: String by map
@@ -12,8 +13,9 @@ class StudentInfo(var map: MutableMap<String, Any?>){
     var birthCountry: String by map
     var motherTongue: String by map
 
-    constructor(firstName:String, lastName:String, userName:String, email:String, phoneNr:String,
+    constructor(id: Long, firstName:String, lastName:String, userName:String, email:String, phoneNr:String,
                 citizenship:String, last5yCountry:String, birthCountry:String, motherTongue:String): this(HashMap()) {
+        this.id = id
         this.firstName = firstName
         this.lastName = lastName
         this.userName = userName

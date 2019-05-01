@@ -15,6 +15,7 @@ class StudentDbHelper(ctx: Context = App.instance): ManagedSQLiteOpenHelper(ctx,
     override fun onCreate(db: SQLiteDatabase){
         db.createTable(StudentTable.NAME, true,
             StudentTable.ID to INTEGER + PRIMARY_KEY,
+            StudentTable.STUDENTID to INTEGER,
             StudentTable.FIRSTNAME to TEXT,
             StudentTable.LASTNAME to TEXT,
             StudentTable.USERNAME to TEXT,
