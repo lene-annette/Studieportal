@@ -10,8 +10,6 @@ class Decoder(val token:String, val gson: Gson = Gson()){
         val split = token.split(".")
         val header = getJson(split[0])
         val body = getJson(split[1])
-        d("Lene","header: " + header)
-        d("Lene", "body: " + body)
         val info = gson.fromJson(body, Body::class.java)
 
         return info.id
