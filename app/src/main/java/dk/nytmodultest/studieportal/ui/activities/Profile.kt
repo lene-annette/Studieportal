@@ -8,6 +8,7 @@ import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
 class Profile : AppCompatActivity() {
@@ -28,5 +29,10 @@ class Profile : AppCompatActivity() {
         toListeningBtn.setOnClickListener{
             startActivity(Intent(this, Listening::class.java))
         }
+
+        toIndiaBtn.setOnClickListener{
+            startActivity(Intent(this, India::class.java))
+        }
+
     }
 }

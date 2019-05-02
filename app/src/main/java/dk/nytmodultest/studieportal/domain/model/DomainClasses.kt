@@ -52,3 +52,9 @@ data class PossibleAnswers (
 
     val answerText : String
 )
+
+
+data class User (
+    val name: String,
+    val address: String
+)
