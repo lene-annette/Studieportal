@@ -28,5 +28,10 @@ class Profile : AppCompatActivity() {
         toListeningBtn.setOnClickListener{
             startActivity(Intent(this, Listening::class.java))
         }
+
+        toChrBranch.setOnClickListener{
+            startActivity(Intent(this, ChrBranch::class.java))
+        }
+
     }
 }
