@@ -50,6 +50,7 @@ class Listening : AppCompatActivity(){
             //super.onPostExecute(result)
             val myresult = Gson().fromJson(result, Exercise::class.java)
 
+            activity_listening_instruction.text = myresult.studentInstructions
 
             //act_textcontent.text = "${myresult}"
             val recyclerView = findViewById(R.id.activity_listening_recyclerView) as RecyclerView

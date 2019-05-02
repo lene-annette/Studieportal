@@ -17,13 +17,13 @@ class CustomAdapter(val userList: ArrayList<User>):
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val user: User = userList[p1]
-        p0?.textViewName?.text = user.name
-        p0?.textViewAddress?.text = user.address
+        p0.textViewName.text = user.name
+        p0.textViewAddress.text = user.address
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int):
             ViewHolder {
-        val v = LayoutInflater.from(p0?.context).inflate(R.layout.list_layout, p0, false)
+        val v = LayoutInflater.from(p0.context).inflate(R.layout.list_layout, p0, false)
         return ViewHolder(v)
     }
 
