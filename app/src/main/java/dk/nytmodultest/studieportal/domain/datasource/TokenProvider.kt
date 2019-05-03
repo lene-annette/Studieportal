@@ -13,5 +13,6 @@ class TokenProvider(private val source: StudentDataSource = TokenProvider.SOURCE
 
     fun login(email: String, password: String) : IdToken = source.login(email,password)
 
+    fun unilogin(user:String, timestamp: String, auth: String) : IdToken = StudentServer().unilogin(user, timestamp, auth)
 }
 

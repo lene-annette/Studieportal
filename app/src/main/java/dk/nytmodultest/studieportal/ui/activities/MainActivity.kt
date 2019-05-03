@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                         idToken = result.token
                         d("Lene", "Token: " + idToken)
                         userId = Decoder(idToken).decode()
+                        finish()
                         startActivity(Intent(it, ProfileActivity::class.java))
                     } else {
                         longToast("Wrong username or password")

@@ -23,4 +23,10 @@ class StudentServer(
         if(result.token == null) result.token = "none"
         return dataMapper.convertToken(result)
     }
+
+    fun unilogin(user: String, timestamp: String, auth: String): IdToken {
+        val result = UniloginRequest(user, timestamp, auth).execute()
+        if(result.token == null ) result.token = "none"
+        return dataMapper.convertToken(result)
+    }
 }
