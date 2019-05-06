@@ -10,7 +10,7 @@ import dk.nytmodultest.studieportal.domain.commands.UniloginCommand
 import dk.nytmodultest.studieportal.domain.model.IdToken
 import dk.nytmodultest.studieportal.extensions.Decoder
 import dk.nytmodultest.studieportal.extensions.DelegatesExt
-import dk.nytmodultest.studieportal.extensions.GetUniParams
+import dk.nytmodultest.studieportal.extensions.UniloginExtension
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
@@ -24,8 +24,8 @@ class UniloginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_unilogin)
-
         handleIntent(intent)
+
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -34,13 +34,16 @@ class UniloginActivity : AppCompatActivity() {
     }
 
     private fun handleIntent(intent: Intent){
-        val appLinkAction = intent.action
-        val appLinkData: Uri? = intent.data
-        if(Intent.ACTION_VIEW == appLinkAction){
-            val gp = GetUniParams(appLinkData.toString())
-            val user = gp.getParam("user")
-            val timestamp = gp.getParam("timestamp")
-            val auth = gp.getParam("auth")
+        //val appLinkAction = intent.action
+        //val appLinkData: Uri? = intent.data
+
+        val data = intent.getStringExtra("url")
+
+        if(data != null){ //Intent.ACTION_VIEW == appLinkAction
+            val ue = UniloginExtension(data) //appLinkData.toString()
+            val user = ue.getParam("user")
+            val timestamp = ue.getParam("timestamp")
+            val auth = ue.getParam("auth")
 
             doAsync(){
                 val result: IdToken = UniloginCommand(user, timestamp, auth).execute()

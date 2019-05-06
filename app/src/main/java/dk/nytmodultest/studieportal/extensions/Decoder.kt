@@ -6,7 +6,6 @@ import java.util.*
 
 class Decoder(val token:String, val gson: Gson = Gson()){
     fun decode():Long{
-        d("Lene","In decoder, token: " + token)
         val split = token.split(".")
         val header = getJson(split[0])
         val body = getJson(split[1])

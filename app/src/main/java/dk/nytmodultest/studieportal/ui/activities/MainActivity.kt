@@ -10,6 +10,7 @@ import dk.nytmodultest.studieportal.domain.commands.LoginCommand
 import dk.nytmodultest.studieportal.domain.model.IdToken
 import dk.nytmodultest.studieportal.extensions.Decoder
 import dk.nytmodultest.studieportal.extensions.DelegatesExt
+import dk.nytmodultest.studieportal.extensions.UniloginExtension
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         const val DEFAULT_TOKEN = "none"
         const val USER_ID = "userId"
         const val DEFAULT_ID: Long = 0
+        var UniUrl = "empty"
     }
 
     private var idToken: String
@@ -38,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         }else{
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+
+
 
         loginBtn.setOnClickListener {
             val email = loginEmail.text.toString()
@@ -57,6 +61,12 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        uniBtn.setOnClickListener {
+            val res = UniloginExtension().toUnilogin()
+            UniUrl = res
+            startActivity(Intent(this, UniloginRedirectActivity::class.java))
         }
     }
 
