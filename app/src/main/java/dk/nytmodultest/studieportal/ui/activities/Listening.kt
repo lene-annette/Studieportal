@@ -63,7 +63,7 @@ class Listening : AppCompatActivity(){
             for (q in myresult.questions){
                 questions.add(q)
             }
-            val adapter = ListeningAdapter(questions)
+            val adapter = ListeningAdapter(questions, this@Listening)
             recyclerView.adapter = adapter
 
 
