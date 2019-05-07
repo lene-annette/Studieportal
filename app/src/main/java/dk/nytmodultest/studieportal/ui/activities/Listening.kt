@@ -67,6 +67,13 @@ class Listening : AppCompatActivity(){
             recyclerView.adapter = adapter
 
 
+
+            activity_listening_confirmBtn.setOnClickListener{
+                val minListeAfKlicks = (recyclerView.adapter as ListeningAdapter).mineSvar.toString()
+                Toast.makeText(this@Listening,minListeAfKlicks,Toast.LENGTH_SHORT).show()
+            }
+
+
         }
 
 
