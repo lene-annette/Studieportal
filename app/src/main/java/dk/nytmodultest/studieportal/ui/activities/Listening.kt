@@ -12,7 +12,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.method.ScrollingMovementMethod
+import android.view.View
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.Toast
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.commands.RequestMultiChoiceCommand
@@ -64,31 +67,18 @@ class Listening : AppCompatActivity(){
             recyclerView.adapter = adapter
 
 
-            /*
-            val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
-            recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-
-
-            val users = ArrayList<User>()
-            users.add(User("Belal Khan", "Ranchi, India"))
-            users.add(User("Belal Khan", "Ranchi, India"))
-            users.add(User("Belal Khan", "Ranchi, India"))
-            users.add(User("Belal Khan", "Ranchi, India"))
-            users.add(User("Belal Khan", "Ranchi, India"))
-
-            val adapter = CustomAdapter(users)
-            recyclerView.adapter = adapter
-             */
-
-
         }
 
 
 
     }
 
-    //TextView textView = (TextView) findViewById(R.id.text_view);
-    //textView.setMovementMethod(new ScrollingMovementMethod());
+
+
+
+    fun message(str: String) {
+        Toast.makeText(this, str, Toast.LENGTH_LONG).show()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
