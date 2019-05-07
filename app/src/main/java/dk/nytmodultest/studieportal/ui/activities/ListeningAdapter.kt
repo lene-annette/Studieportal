@@ -26,8 +26,6 @@ class ListeningAdapter(val questionList: ArrayList<Questions>, private val conte
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
 
-
-
         val question: Questions = questionList[p1]
         p0.textViewQuestions.text = question.question
         p0.textViewOption1.text = question.possibleAnswers[0].answerText
@@ -41,22 +39,8 @@ class ListeningAdapter(val questionList: ArrayList<Questions>, private val conte
             val mulighednavn = context.getResources().getResourceEntryName(mulighedsIndex)
                 //respectively: radioButton1, radioButton2 and radioButton3
             Toast.makeText(context,mulighednavn,Toast.LENGTH_SHORT).show()
-            //radioGroup.getChildAt(i).textViewName
-        })
 
-        /*
-         p0.radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener{radioGroup, i ->
-            Toast.makeText(context,"option "+i+" is selected",Toast.LENGTH_SHORT).show()
-            radioGroup.getChildAt(i).textViewName
         })
-        */
-
-        /*
-        radioGroup.setOnCheckedChangeListener({ group, checkedId ->
-            val radioButton = view.findViewById<RadioButton>(checkedId)
-            Toast.makeText(activity, radioButton.text.toString() + " is checked", Toast.LENGTH_LONG).show()
-        })
-        */
 
 
 
@@ -64,8 +48,6 @@ class ListeningAdapter(val questionList: ArrayList<Questions>, private val conte
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        //val textViewName = itemView.findViewById(R.id.textViewName) as TextView
-        //val textViewAddress = itemView.findViewById(R.id.textViewAddress) as TextView
         val radioGroup = itemView.findViewById(R.id.radioGroup) as RadioGroup
         val textViewQuestions = itemView.findViewById(R.id.textViewQuestion) as TextView
         val textViewOption1 = itemView.findViewById(R.id.radioButton1) as TextView
