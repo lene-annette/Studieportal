@@ -68,7 +68,7 @@
             app:layout_constraintHorizontal_bias="0.523" android:layout_marginTop="36dp">
 
         <Button
-                android:text="listeningBtn"
+                android:text="Listening"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/listeningBtn"
@@ -77,7 +77,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
         />
         <Button
-                android:text="vocabularyBtn"
+                android:text="Vocabulary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/vocabularyBtn"
@@ -87,7 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/listeningBtn" android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/memoryBtn" app:layout_constraintVertical_bias="0.495"/>
         <Button
-                android:text="memoryBtn"
+                android:text="Memory Game"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/memoryBtn" app:layout_constraintStart_toStartOf="parent"

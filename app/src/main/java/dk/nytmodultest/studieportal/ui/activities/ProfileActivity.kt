@@ -13,6 +13,7 @@ import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
 
 class ProfileActivity : AppCompatActivity() {
+    val context: Context = this
 
     private var idToken: String
             by DelegatesExt.preference(this, MainActivity.ID_TOKEN, MainActivity.DEFAULT_TOKEN)
@@ -29,6 +30,10 @@ class ProfileActivity : AppCompatActivity() {
                 longToast("StudentByIdRequest performed")
                 profileInfo.text = "Hello ${result.firstName}!"
             }
+        }
+
+        memoryBtn.setOnClickListener {
+            startActivity(Intent(context, MemoryActivity::class.java))
         }
 
         logoutBtn.setOnClickListener{
