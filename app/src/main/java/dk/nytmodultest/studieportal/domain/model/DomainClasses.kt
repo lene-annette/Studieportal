@@ -4,14 +4,55 @@ data class Student(val id: Long, val firstName: String, val lastName: String, va
                    val phoneNr: String, val citizenship:String, val last5yCountry: String, val birthCountry: String,
                    val motherTongue: String)
 
-data class IdToken(val success: Boolean, val token: String, val message: String){
-//        constructor(
-//        success: Boolean? = null,
-//        token: String? = null,
-//        message: String? = null
-//    ) : this(
-//        success ?: false,
-//        token ?: "none",
-//        message ?: "something went wrong"
-//    )
-}
+data class IdToken(val success: Boolean, val token: String, val message: String)
+
+data class Exercise (
+    val id : Int,
+    val subExamId : Int,
+    val media : String,
+    val headline : String,
+    val mediaType : String,
+    val examType : String,
+    val focus : String,
+    val examinatorInstructions : String,
+    val studentInstructions : String,
+    val time : String,
+    val minutes : Int,
+    val assessment : String,
+    val passed : Int,
+    val moduleNr : Double,
+    val use : String,
+    val access : String,
+    val school : String,
+    val createdAt : String,
+    val updatedAt : String,
+    val questions : List<Questions>
+)
+
+data class Questions (
+
+    val id : Int,
+    val exerciseId : Int,
+    val question : String,
+    val minPoints : Int,
+    val maxPoints : Int,
+    val guideLines : String,
+    val media : String,
+    val mediaType : String,
+    val correctAnswer : String,
+    val type : String,
+    val createdAt : String,
+    val updatedAt : String,
+    val possibleAnswers : List<PossibleAnswers>
+)
+
+data class PossibleAnswers (
+
+    val answerText : String
+)
+
+
+data class User (
+    val name: String,
+    val address: String
+)
