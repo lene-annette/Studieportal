@@ -10,6 +10,7 @@ import dk.nytmodultest.studieportal.extensions.DelegatesExt
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
 class ProfileActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class ProfileActivity : AppCompatActivity() {
             by DelegatesExt.preference(this, MainActivity.ID_TOKEN, MainActivity.DEFAULT_TOKEN)
     private var userId: Long
             by DelegatesExt.preference(this, MainActivity.USER_ID, MainActivity.DEFAULT_ID)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,10 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
+        listeningBtn.setOnClickListener{
+            startActivity(Intent(this, Listening::class.java))
+        }
+
         memoryBtn.setOnClickListener {
             startActivity(Intent(context, MemoryActivity::class.java))
         }
@@ -41,6 +47,7 @@ class ProfileActivity : AppCompatActivity() {
             idToken = MainActivity.DEFAULT_TOKEN
             finish()
         }
-    }
 
+
+    }
 }
