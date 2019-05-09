@@ -25,12 +25,12 @@ class MemoryActivity : AppCompatActivity() {
     var cardsArray: MutableList<Int> = mutableListOf(101,102,103,104,105,106,107,108,201,202,203,204,205,206,207,208)
 
     //actual images
-    val image101 = R.drawable.img101; val image102 = R.drawable.img102; val image103 = R.drawable.img103
-    val image104 = R.drawable.img104; val image105 = R.drawable.img105; val image106 = R.drawable.img106
-    val image107 = R.drawable.img107; val image108 = R.drawable.img108; val image201 = R.drawable.img201
-    val image202 = R.drawable.img202; val image203 = R.drawable.img203; val image204 = R.drawable.img204
-    val image205 = R.drawable.img205; val image206 = R.drawable.img206; val image207 = R.drawable.img207
-    val image208 = R.drawable.img208
+    private val image101 = R.drawable.img101; private val image102 = R.drawable.img102; private val image103 = R.drawable.img103
+    private val image104 = R.drawable.img104; private val image105 = R.drawable.img105; private val image106 = R.drawable.img106
+    private val image107 = R.drawable.img107; private val image108 = R.drawable.img108; private val image201 = R.drawable.img201
+    private val image202 = R.drawable.img202; private val image203 = R.drawable.img203; private val image204 = R.drawable.img204
+    private val image205 = R.drawable.img205; private val image206 = R.drawable.img206; private val image207 = R.drawable.img207
+    private val image208 = R.drawable.img208
 
     var firstCard = 0; var secondCard = 0
     var clickedFirst = 0; var clickedSecond = 0
@@ -155,7 +155,8 @@ class MemoryActivity : AppCompatActivity() {
             cardNumber = 2
             clickedFirst = card
 
-            iv.setEnabled(false)
+            iv.isEnabled = false
+
         }else if(cardNumber == 2){
             secondCard = cardsArray[card]
             if(secondCard > 200){
@@ -164,22 +165,22 @@ class MemoryActivity : AppCompatActivity() {
             cardNumber = 1
             clickedSecond = card
 
-            iv11.setEnabled(false)
-            iv12.setEnabled(false)
-            iv13.setEnabled(false)
-            iv14.setEnabled(false)
-            iv21.setEnabled(false)
-            iv22.setEnabled(false)
-            iv23.setEnabled(false)
-            iv24.setEnabled(false)
-            iv31.setEnabled(false)
-            iv32.setEnabled(false)
-            iv33.setEnabled(false)
-            iv34.setEnabled(false)
-            iv41.setEnabled(false)
-            iv42.setEnabled(false)
-            iv43.setEnabled(false)
-            iv44.setEnabled(false)
+            iv11.isEnabled = false
+            iv12.isEnabled = false
+            iv13.isEnabled = false
+            iv14.isEnabled = false
+            iv21.isEnabled = false
+            iv22.isEnabled = false
+            iv23.isEnabled = false
+            iv24.isEnabled = false
+            iv31.isEnabled = false
+            iv32.isEnabled = false
+            iv33.isEnabled = false
+            iv34.isEnabled = false
+            iv41.isEnabled = false
+            iv42.isEnabled = false
+            iv43.isEnabled = false
+            iv44.isEnabled = false
 
             val handler = Handler()
             handler.postDelayed({
@@ -208,7 +209,7 @@ class MemoryActivity : AppCompatActivity() {
                 14 -> iv43
                 else -> iv44
             }
-            iv1.setVisibility(View.INVISIBLE)
+            iv1.visibility = View.INVISIBLE
 
             var iv2 = when(clickedSecond){
                 0 -> iv11
@@ -228,7 +229,7 @@ class MemoryActivity : AppCompatActivity() {
                 14 -> iv43
                 else -> iv44
             }
-            iv2.setVisibility(View.INVISIBLE)
+            iv2.visibility = View.INVISIBLE
         } else {
             val back = R.drawable.back
             iv11.setImageResource(back)
@@ -248,22 +249,22 @@ class MemoryActivity : AppCompatActivity() {
             iv43.setImageResource(back)
             iv44.setImageResource(back)
         }
-        iv11.setEnabled(true)
-        iv12.setEnabled(true)
-        iv13.setEnabled(true)
-        iv14.setEnabled(true)
-        iv21.setEnabled(true)
-        iv22.setEnabled(true)
-        iv23.setEnabled(true)
-        iv24.setEnabled(true)
-        iv31.setEnabled(true)
-        iv32.setEnabled(true)
-        iv33.setEnabled(true)
-        iv34.setEnabled(true)
-        iv41.setEnabled(true)
-        iv42.setEnabled(true)
-        iv43.setEnabled(true)
-        iv44.setEnabled(true)
+        iv11.isEnabled = true
+        iv12.isEnabled = true
+        iv13.isEnabled = true
+        iv14.isEnabled = true
+        iv21.isEnabled = true
+        iv22.isEnabled = true
+        iv23.isEnabled = true
+        iv24.isEnabled = true
+        iv31.isEnabled = true
+        iv32.isEnabled = true
+        iv33.isEnabled = true
+        iv34.isEnabled = true
+        iv41.isEnabled = true
+        iv42.isEnabled = true
+        iv43.isEnabled = true
+        iv44.isEnabled = true
 
         checkEnd()
     }
@@ -318,21 +319,21 @@ class MemoryActivity : AppCompatActivity() {
         iv43 = findViewById(R.id.iv_43)
         iv44 = findViewById(R.id.iv_44)
 
-        iv11.setTag("0")
-        iv12.setTag("1")
-        iv13.setTag("2")
-        iv14.setTag("3")
-        iv21.setTag("4")
-        iv22.setTag("5")
-        iv23.setTag("6")
-        iv24.setTag("7")
-        iv31.setTag("8")
-        iv32.setTag("9")
-        iv33.setTag("10")
-        iv34.setTag("11")
-        iv41.setTag("12")
-        iv42.setTag("13")
-        iv43.setTag("14")
-        iv44.setTag("15")
+        iv11.tag = "0"
+        iv12.tag = "1"
+        iv13.tag = "2"
+        iv14.tag = "3"
+        iv21.tag = "4"
+        iv22.tag = "5"
+        iv23.tag = "6"
+        iv24.tag = "7"
+        iv31.tag = "8"
+        iv32.tag = "9"
+        iv33.tag = "10"
+        iv34.tag = "11"
+        iv41.tag = "12"
+        iv42.tag = "13"
+        iv43.tag = "14"
+        iv44.tag = "15"
     }
 }
