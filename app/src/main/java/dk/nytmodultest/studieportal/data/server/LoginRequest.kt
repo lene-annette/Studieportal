@@ -11,8 +11,7 @@ import java.net.URL
 
 class LoginRequest(private val email:String, private val password: String, val gson: Gson = Gson()){
     companion object{
-        // private const val API = "https://nytmodultest.dk/modultest-api/api/"
-        private const val API = "http://10.25.0.133:8000/api/"
+        private const val API = RequestInfo.API
         private const val SRC = "login-student"
         private const val COMPLETE_URL = API + SRC
     }

@@ -11,13 +11,12 @@ import android.widget.TextView
 import android.widget.Toast
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.model.Exercise
-import dk.nytmodultest.studieportal.domain.model.Questions
-import kotlinx.android.synthetic.main.list_layout.view.*
+import dk.nytmodultest.studieportal.domain.model.Question
 
 
 
 
-class ListeningAdapter(val questionList: ArrayList<Questions>, private val context: Context): RecyclerView.Adapter<ListeningAdapter.ViewHolder>(){
+class ListeningAdapter(val questionList: ArrayList<Question>, private val context: Context): RecyclerView.Adapter<ListeningAdapter.ViewHolder>(){
 
     var mineSvar = ArrayList<String>()
 
@@ -35,7 +34,7 @@ class ListeningAdapter(val questionList: ArrayList<Questions>, private val conte
         //var mineSvar = ArrayList<String>()
 
 
-        val question: Questions = questionList[p1]
+        val question: Question = questionList[p1]
         p0.textViewQuestions.text = question.question
         p0.textViewOption1.text = question.possibleAnswers[0].answerText
         p0.textViewOption2.text = question.possibleAnswers[1].answerText

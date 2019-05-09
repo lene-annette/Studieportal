@@ -14,6 +14,9 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
 class ProfileActivity : AppCompatActivity() {
+    companion object {
+        var ONLINE_USER: Long = 0
+    }
     val context: Context = this
 
     private var idToken: String
@@ -25,6 +28,8 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        ONLINE_USER = userId
+
 
         doAsync(){
             val result = RequestStudentCommand(userId).execute()

@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activities.India">
+        tools:context=".ui.activities.Listening">
 
     <TextView
             android:text="activity_listening_instruction"
@@ -28,7 +28,7 @@
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
-            android:text="confirmBtn"
+            android:text="submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/activity_listening_confirmBtn" android:layout_marginTop="8dp"

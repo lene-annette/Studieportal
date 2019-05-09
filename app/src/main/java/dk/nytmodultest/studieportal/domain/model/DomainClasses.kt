@@ -7,7 +7,7 @@ data class Student(val id: Long, val firstName: String, val lastName: String, va
 data class IdToken(val success: Boolean, val token: String, val message: String)
 
 data class Exercise (
-    val id : Int,
+    val id : Long,
     val subExamId : Int,
     val media : String,
     val headline : String,
@@ -26,10 +26,10 @@ data class Exercise (
     val school : String,
     val createdAt : String,
     val updatedAt : String,
-    val questions : List<Questions>
+    val questions : List<Question>
 )
 
-data class Questions (
+data class Question (
 
     val id : Int,
     val exerciseId : Int,
@@ -43,10 +43,10 @@ data class Questions (
     val type : String,
     val createdAt : String,
     val updatedAt : String,
-    val possibleAnswers : List<PossibleAnswers>
+    val possibleAnswers : List<PossibleAnswer>
 )
 
-data class PossibleAnswers (
+data class PossibleAnswer (
 
     val answerText : String
 )

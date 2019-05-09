@@ -1,5 +1,6 @@
 package dk.nytmodultest.studieportal.data.server
 
+import dk.nytmodultest.studieportal.domain.model.Exercise
 import dk.nytmodultest.studieportal.domain.model.IdToken
 import dk.nytmodultest.studieportal.domain.model.Student
 
