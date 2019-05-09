@@ -2,6 +2,7 @@ package dk.nytmodultest.studieportal.data.server
 
 import android.util.Log.d
 import dk.nytmodultest.studieportal.domain.model.Exercise
+import dk.nytmodultest.studieportal.domain.model.Question
 
 class ExerciseServer {
 
@@ -10,6 +11,10 @@ class ExerciseServer {
         d("Lene","Result: ${result.studentInstructions}")
         return result
 
+    }
+
+    fun submitAnswers(studentId: Long, questions: List<Question>, answers:List<String>){
+        ExerciseRequest().submitAnswers(studentId,questions,answers)
     }
 
 

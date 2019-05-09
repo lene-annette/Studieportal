@@ -11,5 +11,4 @@ class RequestExerciseCommand(private val examType: String, private val studentId
 
     override fun execute(): Exercise = exerciseProvider.requestUnfinishedExercises(examType,studentId,questionType,noOfExercises)
 
-
 }

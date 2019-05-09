@@ -9,3 +9,14 @@ data class StudentResult(
     val motherTongue: String)
 
 data class IdTokenResult(val success: Boolean, var token: String, val message:String)
+
+data class QuestionResponse(
+    val questionId: Int,
+    val studentId: Long,
+    val correctAnswer: String,
+    val minPoints: Int,
+    val maxPoints: Int,
+    val response: String,
+    val comments: String,
+    val autoCorrect: Boolean
+)
