@@ -21,7 +21,7 @@ class UniloginRedirectActivity : AppCompatActivity() {
         webview.settings.javaScriptEnabled = true
         webview.webViewClient = object: WebViewClient(){
                 override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean{
-                    if(url.startsWith("http://10.25.0.133:3000/app-unilogin")){
+                    if(url.startsWith("http://10.0.2.2:3000/app-unilogin")){
                         var i = Intent(context, UniloginActivity::class.java)
                         i.putExtra("url", url)
                         finish()
