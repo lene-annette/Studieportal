@@ -69,4 +69,17 @@
             android:layout_marginStart="12dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/seekBar"
             app:layout_constraintVertical_bias="0.81"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="3dp" android:id="@+id/seekBarStart"
+            app:layout_constraintBottom_toTopOf="@+id/seekBar"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarEnd"
+            app:layout_constraintBottom_toTopOf="@+id/seekBar" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
 </android.support.constraint.ConstraintLayout>
