@@ -126,7 +126,7 @@ class MemoryActivity : AppCompatActivity() {
     }
 
     private fun doStuff(iv: ImageView,card: Int){
-        var imageSrc = when(cardsArray[card]){
+        val imageSrc = when(cardsArray[card]){
             101 -> image101
             102 -> image102
             103 -> image103
@@ -191,7 +191,7 @@ class MemoryActivity : AppCompatActivity() {
 
     private fun calculate(){
         if(firstCard == secondCard){
-            var iv1 = when(clickedFirst){
+            val iv1 = when(clickedFirst){
                 0 -> iv11
                 1 -> iv12
                 2 -> iv13
@@ -211,7 +211,7 @@ class MemoryActivity : AppCompatActivity() {
             }
             iv1.visibility = View.INVISIBLE
 
-            var iv2 = when(clickedSecond){
+            val iv2 = when(clickedSecond){
                 0 -> iv11
                 1 -> iv12
                 2 -> iv13
