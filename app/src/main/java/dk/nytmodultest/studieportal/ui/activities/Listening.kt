@@ -35,12 +35,15 @@ class Listening : AppCompatActivity(){
                 for(q in result.questions){
                     questions.add(q)
                 }
+
                 val adapter = ListeningAdapter(questions, this@Listening)
                 recyclerView.adapter = adapter
 
                 activity_listening_confirmBtn.setOnClickListener{
-                    val listOfClicks = (recyclerView.adapter as ListeningAdapter).mineSvar.toString()
-                    Toast.makeText(this@Listening,listOfClicks,Toast.LENGTH_SHORT).show()
+                    val listOfClicks = (recyclerView.adapter as ListeningAdapter).answers.toString()
+                    d("Lene","Listening list of clicks (answers?): $listOfClicks")
+
+                    //Toast.makeText(this@Listening,listOfClicks,Toast.LENGTH_SHORT).show()
                 }
             }
         }
