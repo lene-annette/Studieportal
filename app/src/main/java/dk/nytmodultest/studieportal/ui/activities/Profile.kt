@@ -21,7 +21,7 @@ class Profile : AppCompatActivity() {
         doAsync(){
             val result = RequestStudentCommand(1).execute()
             uiThread{
-                longToast("StudentByIdRequest performed")
+                //longToast("StudentByIdRequest performed")
                 profileInfo.text = "Hello ${result.firstName}!"
             }
         }

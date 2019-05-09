@@ -21,6 +21,8 @@ import kotlinx.android.synthetic.main.activity_listening.*
 import java.net.URL
 
 
+
+
 class Listening : AppCompatActivity(){
 
     private var barPositionPct = 0
@@ -64,6 +66,20 @@ class Listening : AppCompatActivity(){
             val myresult = Gson().fromJson(result, Exercise::class.java)
             activity_listening_instruction.text = myresult.studentInstructions
 
+            val recyclerView = findViewById(id.activity_listening_recyclerView) as RecyclerView
+            recyclerView.layoutManager = LinearLayoutManager(this@Listening, LinearLayout.VERTICAL, false)
+
+            val questions = ArrayList<Questions>()
+            for (q in myresult.questions){
+                questions.add(q)
+            }
+            val adapter = ListeningAdapter(questions, this@Listening)
+            recyclerView.adapter = adapter
+
+            activity_listening_confirmBtn.setOnClickListener{
+                val minListeAfKlicks = (recyclerView.adapter as ListeningAdapter).mineSvar.toString()
+                Toast.makeText(this@Listening,minListeAfKlicks,Toast.LENGTH_SHORT).show()
+            }
 
             //var mp3url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
             var mp3url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
@@ -71,12 +87,18 @@ class Listening : AppCompatActivity(){
 
             mediaPlayer = MediaPlayer()
             mediaPlayer.setDataSource(mp3url)
-            mediaPlayer.prepare()
-
-            findViewById<TextView>(id.seekBarStart).text = "0"
-            findViewById<TextView>(id.seekBarEnd).text = (mediaPlayer.duration/1000).toString()
+            mediaPlayer.prepareAsync()//********************************************
 
             seekBar = findViewById<SeekBar>(id.seekBar)
+
+            mediaPlayer.setOnPreparedListener(MediaPlayer.OnPreparedListener {
+                seekBar.setMax(mediaPlayer.getDuration())
+                findViewById<TextView>(id.seekBarStart).text = "0"
+                findViewById<TextView>(id.seekBarEnd).text = (mediaPlayer.duration/1000).toString()
+
+            })
+
+
             seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                     barPositionPct = progress
@@ -95,10 +117,6 @@ class Listening : AppCompatActivity(){
 
                 }
             })
-
-            seekBar.setMax(mediaPlayer.getDuration())
-            //mSeekbarUpdateHandler.removeCallbacks(runnable);
-
 
             play_audiobtn.setOnClickListener{
 
@@ -121,20 +139,7 @@ class Listening : AppCompatActivity(){
             }
 
 
-            val recyclerView = findViewById(id.activity_listening_recyclerView) as RecyclerView
-            recyclerView.layoutManager = LinearLayoutManager(this@Listening, LinearLayout.VERTICAL, false)
 
-            val questions = ArrayList<Questions>()
-            for (q in myresult.questions){
-                questions.add(q)
-            }
-            val adapter = ListeningAdapter(questions, this@Listening)
-            recyclerView.adapter = adapter
-
-            activity_listening_confirmBtn.setOnClickListener{
-                val minListeAfKlicks = (recyclerView.adapter as ListeningAdapter).mineSvar.toString()
-                Toast.makeText(this@Listening,minListeAfKlicks,Toast.LENGTH_SHORT).show()
-            }
 
         }
 
