@@ -12,7 +12,6 @@ import android.widget.Toast
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.model.Exercise
 import dk.nytmodultest.studieportal.domain.model.Questions
-import kotlinx.android.synthetic.main.list_layout.view.*
 
 
 

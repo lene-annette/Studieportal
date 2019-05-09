@@ -30,13 +30,5 @@ class Profile : AppCompatActivity() {
             startActivity(Intent(this, Listening::class.java))
         }
 
-        toIndiaBtn.setOnClickListener{
-            startActivity(Intent(this, India::class.java))
-        }
-
-        toChrDBcall.setOnClickListener{
-            startActivity(Intent(this, ChrDBcall::class.java))
-        }
-
     }
 }
