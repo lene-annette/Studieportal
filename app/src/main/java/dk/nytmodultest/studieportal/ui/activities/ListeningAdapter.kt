@@ -40,7 +40,7 @@ class ListeningAdapter(val questionList: ArrayList<Questions>, private val conte
         p0.textViewOption2.text = question.possibleAnswers[1].answerText
         p0.textViewOption3.text = question.possibleAnswers[2].answerText
 
-        p0.radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener{radioGroup, i ->
+        p0.radioGroup.setOnCheckedChangeListener({ radioGroup, _ ->
             val spoergsmaalsindex = p0.adapterPosition.toString()
                 //respectively: 0, 1, 2 ect.
             val mulighedsIndex = radioGroup.checkedRadioButtonId

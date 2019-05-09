@@ -35,13 +35,7 @@ class Listening : AppCompatActivity(){
             //try{
             //use "10.0.2.2" instead of localhost (ottherwise you get an exception)
             databaseGet =  URL("http://10.0.2.2:8000/api/findQuestionsByExerciseId/1").readText()
-            //} //catch (e: Exception) {
-            //return e.toString()
-            //return "Database error"
-            //}
 
-            //val article = Gson().fromJson(databaseGet, Exercise::class.java)
-            //return article.toString()
             return databaseGet
         }
 
@@ -55,7 +49,8 @@ class Listening : AppCompatActivity(){
 
             activity_listening_instruction.text = myresult.studentInstructions
 
-            //act_textcontent.text = "${myresult}"
+            
+
             val recyclerView = findViewById(R.id.activity_listening_recyclerView) as RecyclerView
             recyclerView.layoutManager = LinearLayoutManager(this@Listening, LinearLayout.VERTICAL, false)
 
