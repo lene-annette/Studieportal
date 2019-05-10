@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.commands.RequestExerciseCommand
+import dk.nytmodultest.studieportal.domain.commands.SubmitAnswersCommand
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.net.URL
@@ -36,12 +37,22 @@ class Listening : AppCompatActivity(){
                     questions.add(q)
                 }
 
+
+
                 val adapter = ListeningAdapter(questions, this@Listening)
                 recyclerView.adapter = adapter
 
                 activity_listening_confirmBtn.setOnClickListener{
-                    val listOfClicks = (recyclerView.adapter as ListeningAdapter).answers.toString()
+                    val listOfClicks = (recyclerView.adapter as ListeningAdapter).answers
                     d("Lene","Listening list of clicks (answers?): $listOfClicks")
+
+                    doAsync{
+                        SubmitAnswersCommand(ProfileActivity.ONLINE_USER,questions,listOfClicks).execute()
+                        uiThread {
+                            Toast.makeText(this@Listening,"Your answers have been submitted",Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+                    }
 
                     //Toast.makeText(this@Listening,listOfClicks,Toast.LENGTH_SHORT).show()
                 }

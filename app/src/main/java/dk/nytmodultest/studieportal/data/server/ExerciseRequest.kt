@@ -32,36 +32,54 @@ class ExerciseRequest(val gson: Gson = Gson()){
 
     fun submitAnswers(studentId: Long, questions: List<Question>, answers: List<String>){
         val endpoint = API + "multiple-questionresponses"
-        var answeredQuestions: MutableList<QuestionResponse> = mutableListOf()
+        //var answeredQuestions: MutableList<QuestionResponse> = mutableListOf()
+        var answeredQuestions: MutableList<JSONObject> = mutableListOf()
 
         for((idx,question) in questions.withIndex()){
+            val response = JSONObject()
             var auto = false
             var comments = ""
             if(question.type == "multiple choice"){
                 auto = true
             }
 
-            var questionResponse = QuestionResponse(question.id,studentId,question.correctAnswer,question.minPoints,
-                question.maxPoints,answers[idx],comments,auto)
+            response.put("questionId",question.id)
+            response.put("studentId",studentId)
+            response.put("correctAnswer",question.correctAnswer)
+            response.put("minPoints",question.minPoints)
+            response.put("maxPoints",question.maxPoints)
+            response.put("response",answers[idx])
+            response.put("comments", comments)
+            response.put("autoCorrect", auto)
 
-            answeredQuestions.add(questionResponse)
+//            var questionResponse = QuestionResponse(question.id,studentId,question.correctAnswer,question.minPoints,
+//                question.maxPoints,answers[idx],comments,auto)
+
+            answeredQuestions.add(response)
         }
 
         val json = JSONObject()
         json.put("answeredQuestions",answeredQuestions)
-        val body = json.toString()
+        var body = json.toString().replace("\\","")
+
+        //This is specific to make this json object work with backend, (as with the above escape characters)
+        //apparently body.toString() adds a lot of characters, like "" and \\, confusing the endpoint. 
+        body = body.removeRange(21,22)
+        body = body.removeRange(body.length-2,body.length-1)
+
+        d("Lene","ExerciseRequest, body: $body")
 
         val response = URL(endpoint)
             .openConnection()
             .let{
                 it as HttpURLConnection
             }.apply{
-                setRequestProperty("Content-type","application/json; charset=utf-8")
+                setRequestProperty("Content-type","application/json; charset=UTF-8")
                 requestMethod = "POST"
 
                 doOutput = true
                 val outputWriter = OutputStreamWriter(outputStream)
-                outputWriter.write(body)
+                outputWriter.write(body.toString())
                 outputWriter.flush()
             }.let{
                 if(it.responseCode == 200){
