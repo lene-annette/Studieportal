@@ -73,8 +73,8 @@ class Listening : AppCompatActivity(){
 
                 //var mp3url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
 
-                var mp3url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
-                //var mp3url: String = "http://10.0.2.2:8000/audio/lytning_2.mp3"  //lytning_2.mp3
+                //var mp3url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
+                var mp3url: String = "http://10.25.0.133:8000/audio/lytning_2.mp3"  //lytning_2.mp3
 
 
                 mediaPlayer = MediaPlayer()
