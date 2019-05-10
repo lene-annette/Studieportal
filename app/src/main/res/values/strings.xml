@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Studieportal</string>
+    <string name="activity_listening_instruction">activity_listening_instruction</string>
+    <string name="confirmbtn">confirmBtn</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="back">Back</string>
+    <string name="fwrd">Fwrd</string>
+    <string name="tStart">tStart</string>
+    <string name="tEnd">tEnd</string>
 </resources>
