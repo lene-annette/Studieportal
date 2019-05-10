@@ -82,7 +82,9 @@ class Listening : AppCompatActivity(){
             }
 
             //var mp3url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
+
             var mp3url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
+            //var mp3url: String = "http://10.0.2.2:8000/audio/lytning_2.mp3"  //lytning_2.mp3
 
 
             mediaPlayer = MediaPlayer()
@@ -93,8 +95,8 @@ class Listening : AppCompatActivity(){
 
             mediaPlayer.setOnPreparedListener(MediaPlayer.OnPreparedListener {
                 seekBar.setMax(mediaPlayer.getDuration())
-                findViewById<TextView>(id.seekBarStart).text = "0"
-                findViewById<TextView>(id.seekBarEnd).text = (mediaPlayer.duration/1000).toString()
+                findViewById<TextView>(id.seekBarStart).text = displayTime(0)
+                findViewById<TextView>(id.seekBarEnd).text = displayTime(mediaPlayer.duration)//(mediaPlayer.duration/1000).toString()
 
             })
 
@@ -106,7 +108,7 @@ class Listening : AppCompatActivity(){
                     if (fromUser){
                         mediaPlayer.seekTo(progress)
                     }
-                    findViewById<TextView>(id.seekBarStart).text = (barTimeMillis/1000).toString()
+                    findViewById<TextView>(id.seekBarStart).text = displayTime(barTimeMillis)//(barTimeMillis/1000).toString()
 
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -161,6 +163,15 @@ class Listening : AppCompatActivity(){
 
 
 
+    }
+
+    fun displayTime(millis: Int): String {
+        var minutes = (millis / 1000 / 60).toString()
+        var seconds = (millis / 1000 % 60).toString()
+        if (seconds.length < 2){
+            seconds = "0"+seconds
+        }
+        return "${minutes}:${seconds}"
     }
 
 
