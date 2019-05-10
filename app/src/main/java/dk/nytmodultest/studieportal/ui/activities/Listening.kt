@@ -70,8 +70,8 @@ class Listening : AppCompatActivity(){
             recyclerView.adapter = adapter
 
             activity_listening_confirmBtn.setOnClickListener{
-                val minListeAfKlicks = (recyclerView.adapter as ListeningAdapter).mineSvar.toString()
-                Toast.makeText(this@Listening,minListeAfKlicks,Toast.LENGTH_SHORT).show()
+                //val minListeAfKlicks = (recyclerView.adapter as ListeningAdapter).mineSvar.toString()
+                //Toast.makeText(this@Listening,minListeAfKlicks,Toast.LENGTH_SHORT).show()
             }
 
             //var mp3url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
