@@ -108,6 +108,11 @@ class Listening : AppCompatActivity(){
                         play_audiobtn.text = "PLAY"
                     }
 
+                    if ((mediaPlayer.duration-progress)==0) {
+                        play_audiobtn.text = "PLAY"
+                        mediaPlayer.seekTo(0)
+                    }
+
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar) {
                     // Write code to perform some action when touch is started.
@@ -117,6 +122,7 @@ class Listening : AppCompatActivity(){
 
                 }
             })
+
 
             play_audiobtn.setOnClickListener{
 
