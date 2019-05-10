@@ -24,7 +24,6 @@ import java.net.URL
 
 class Listening : AppCompatActivity(){
 
-    private var barPositionPct = 0
     private var barTimeMillis = 0
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var seekBar: SeekBar
@@ -97,12 +96,17 @@ class Listening : AppCompatActivity(){
 
             seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                    barPositionPct = progress
+
                     barTimeMillis = mediaPlayer.currentPosition
                     if (fromUser){
                         mediaPlayer.seekTo(progress)
                     }
                     findViewById<TextView>(id.seekBarStart).text = displayTime(barTimeMillis)
+                    if (mediaPlayer.isPlaying){
+                        play_audiobtn.text = "PAUSE"
+                    }else {
+                        play_audiobtn.text = "PLAY"
+                    }
 
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -119,8 +123,10 @@ class Listening : AppCompatActivity(){
                 if (!mediaPlayer.isPlaying){
                     mSeekbarUpdateHandler.postDelayed(mUpdateSeekbar, 0);
                     mediaPlayer.start()
+
                 }else{
                     mediaPlayer.pause()
+                    play_audiobtn.text = "PLAY"
 
                 }
 
