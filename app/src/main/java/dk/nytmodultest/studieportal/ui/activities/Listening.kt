@@ -1,6 +1,5 @@
 package dk.nytmodultest.studieportal.ui.activities
 
-//import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
 import android.media.MediaPlayer
 import android.os.AsyncTask
 import android.os.Bundle
@@ -29,9 +28,6 @@ class Listening : AppCompatActivity(){
     private var barTimeMillis = 0
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var seekBar: SeekBar
-    private lateinit var runnable:Runnable
-    private var handler: Handler = Handler()
-    private var pause:Boolean = false
 
     private val mSeekbarUpdateHandler = Handler()
     private val mUpdateSeekbar = object : Runnable {
@@ -49,10 +45,9 @@ class Listening : AppCompatActivity(){
 
         override fun doInBackground(vararg params: String?): String {
             val databaseGet: String
-            //try{
+
             //use "10.0.2.2" instead of localhost (ottherwise you get an exception)
             databaseGet =  URL("http://10.0.2.2:8000/api/findQuestionsByExerciseId/1").readText()
-
             return databaseGet
         }
 
@@ -62,7 +57,6 @@ class Listening : AppCompatActivity(){
 
 
         override fun onPostExecute(result: String?) {
-            //super.onPostExecute(result)
             val myresult = Gson().fromJson(result, Exercise::class.java)
             activity_listening_instruction.text = myresult.studentInstructions
 
@@ -89,14 +83,14 @@ class Listening : AppCompatActivity(){
 
             mediaPlayer = MediaPlayer()
             mediaPlayer.setDataSource(mp3url)
-            mediaPlayer.prepareAsync()//********************************************
+            mediaPlayer.prepareAsync()
 
             seekBar = findViewById<SeekBar>(id.seekBar)
 
             mediaPlayer.setOnPreparedListener(MediaPlayer.OnPreparedListener {
                 seekBar.setMax(mediaPlayer.getDuration())
                 findViewById<TextView>(id.seekBarStart).text = displayTime(0)
-                findViewById<TextView>(id.seekBarEnd).text = displayTime(mediaPlayer.duration)//(mediaPlayer.duration/1000).toString()
+                findViewById<TextView>(id.seekBarEnd).text = displayTime(mediaPlayer.duration)
 
             })
 
@@ -108,7 +102,7 @@ class Listening : AppCompatActivity(){
                     if (fromUser){
                         mediaPlayer.seekTo(progress)
                     }
-                    findViewById<TextView>(id.seekBarStart).text = displayTime(barTimeMillis)//(barTimeMillis/1000).toString()
+                    findViewById<TextView>(id.seekBarStart).text = displayTime(barTimeMillis)
 
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -140,9 +134,6 @@ class Listening : AppCompatActivity(){
                 mediaPlayer.seekTo(barTimeMillis+2000)
             }
 
-
-
-
         }
 
     }
@@ -157,12 +148,7 @@ class Listening : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_listening)
 
-
-        //act_textcontent.setMovementMethod(ScrollingMovementMethod());
         GetListeningExercise().execute()
-
-
-
     }
 
     fun displayTime(millis: Int): String {
