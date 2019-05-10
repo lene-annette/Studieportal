@@ -47,10 +47,10 @@ class ListeningAdapter(val questionList: ArrayList<Question>, private val contex
 
         p0.radioGroup.setOnCheckedChangeListener{radioGroup, checkedId ->
             val questionIndex = p0.adapterPosition.toString()
-                //respectively: 0, 1, 2 ect.
+            //respectively: 0, 1, 2 ect.
             //val possibilityIndex = radioGroup.checkedRadioButtonId
             val possibilityName = context.getResources().getResourceEntryName(checkedId)
-                //respectively: radioButton1, radioButton2 and radioButton3
+            //respectively: radioButton1, radioButton2 and radioButton3
 
             val opt1 = p0.textViewOption1.id
             val opt2 = p0.textViewOption2.id

@@ -3,6 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="dk.nytmodultest.studieportal">
 
+
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -36,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activities.ProfileActivity">
+
         </activity>
         <activity android:name=".ui.activities.Listening">
         </activity>
