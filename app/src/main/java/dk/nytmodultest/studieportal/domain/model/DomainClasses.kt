@@ -52,7 +52,12 @@ data class PossibleAnswer (
 )
 
 
-data class User (
-    val name: String,
-    val address: String
+data class Word (
+    val id: Int,
+    val word: String,
+    val meaning: String,
+    val synonym: String,
+    val english: String,
+    val pronunciation: String,
+    val image: String
 )

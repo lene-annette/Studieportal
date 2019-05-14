@@ -10,7 +10,10 @@ import android.util.Log.d
 import android.view.View
 import android.widget.ImageView
 import dk.nytmodultest.studieportal.R
+import dk.nytmodultest.studieportal.domain.commands.RequestWordsCommand
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.uiThread
 import java.util.*
 
 class MemoryActivity : AppCompatActivity() {
@@ -39,6 +42,13 @@ class MemoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
+
+        doAsync{
+            val words = RequestWordsCommand(ProfileActivity.ONLINE_USER,8).execute()
+            uiThread{
+                d("Lene","WORDS: $words")
+            }
+        }
 
         init()
         cardsArray.shuffle()

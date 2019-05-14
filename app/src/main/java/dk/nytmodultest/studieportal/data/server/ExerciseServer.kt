@@ -8,7 +8,6 @@ class ExerciseServer {
 
     fun getUnfinishedExercises(examType: String,studentId: Long,questionType: String,noOfExercises: Int): Exercise{
         val result =  ExerciseRequest().getUnfinishedExercises(examType,studentId,questionType,noOfExercises)
-        d("Lene","Result: ${result.studentInstructions}")
         return result
 
     }
