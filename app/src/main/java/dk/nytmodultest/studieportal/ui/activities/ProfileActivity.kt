@@ -43,6 +43,10 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, Listening::class.java))
         }
 
+        vocabularyBtn.setOnClickListener{
+            startActivity(Intent(this, Vocabulary::class.java))
+        }
+
         memoryBtn.setOnClickListener {
             startActivity(Intent(context, MemoryActivity::class.java))
         }
