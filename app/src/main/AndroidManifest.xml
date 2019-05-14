@@ -21,20 +21,6 @@
         <activity android:name=".ui.activities.UniloginRedirectActivity">
         </activity>
         <activity android:name=".ui.activities.UniloginActivity">
-            <tools:validation testUrl="http://10.25.0.133:3000/app-unilogin"/>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data
-                        android:host="10.25.0.133"
-                        android:pathPattern="/app-unilogin"
-                        android:port="3000"
-                        android:scheme="http"/>
-            </intent-filter>
         </activity>
         <activity android:name=".ui.activities.ProfileActivity">
 
