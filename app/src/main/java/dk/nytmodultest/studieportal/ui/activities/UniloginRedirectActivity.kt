@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import dk.nytmodultest.studieportal.Config
 import dk.nytmodultest.studieportal.R
 
 class UniloginRedirectActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class UniloginRedirectActivity : AppCompatActivity() {
         webview.settings.javaScriptEnabled = true
         webview.webViewClient = object: WebViewClient(){
                 override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean{
-                    if(url.startsWith("http://10.25.0.133:3000/app-unilogin")){
+                    if(url.startsWith("${Config.FRONTEND}app-unilogin")){
                         var i = Intent(context, UniloginActivity::class.java)
                         i.putExtra("url", url)
                         finish()

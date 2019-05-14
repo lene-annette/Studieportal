@@ -2,6 +2,7 @@ package dk.nytmodultest.studieportal.data.server
 
 import android.util.Log.d
 import com.google.gson.Gson
+import dk.nytmodultest.studieportal.Config
 import dk.nytmodultest.studieportal.domain.model.Exercise
 import dk.nytmodultest.studieportal.domain.model.Question
 import org.json.JSONObject
@@ -13,7 +14,7 @@ import java.net.URL
 
 class ExerciseRequest(val gson: Gson = Gson()){
     companion object{
-        private const val API = RequestInfo.API
+        private const val API = Config.API
         private const val SRC = "unfinished-exercises-by-type/"
         private const val COMPLETE_URL = API + SRC
     }

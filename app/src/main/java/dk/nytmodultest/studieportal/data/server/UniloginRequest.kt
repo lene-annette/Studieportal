@@ -1,6 +1,7 @@
 package dk.nytmodultest.studieportal.data.server
 
 import com.google.gson.Gson
+import dk.nytmodultest.studieportal.Config
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -10,8 +11,7 @@ import java.net.URL
 
 class UniloginRequest(private val user:String, private val timestamp: String, val auth:String, val gson: Gson = Gson()) {
     companion object {
-        // private const val API = "https://nytmodultest.dk/modultest-api/api/"
-        private const val API = "http://10.25.0.133:8000/api/"
+        private const val API = Config.API
         private const val SRC = "student-unilogin"
         private const val COMPLETE_URL = API + SRC
     }

@@ -3,6 +3,7 @@ package dk.nytmodultest.studieportal.extensions
 import android.icu.lang.UCharacter.GraphemeClusterBreak.L
 import android.util.Log.d
 import android.util.Base64
+import dk.nytmodultest.studieportal.Config
 import java.net.URLEncoder
 import java.security.MessageDigest
 
@@ -33,7 +34,7 @@ class UniloginExtension(private val url: String = "none"){
 
     fun toUnilogin():String{
         var loginUrl = "https://sso.emu.dk/unilogin/login.cgi?"
-        val returnUrl = "http://10.25.0.133:3000/app-unilogin"
+        val returnUrl = "${Config.FRONTEND}app-unilogin"
         val appId = "ssomobius"
         val secret = "edxjv3@PU77Ajc\$L"
         val md5 = toMd5Hash(returnUrl+secret)
