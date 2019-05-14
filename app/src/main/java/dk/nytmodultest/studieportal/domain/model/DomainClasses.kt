@@ -1,5 +1,7 @@
 package dk.nytmodultest.studieportal.domain.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Student(val id: Long, val firstName: String, val lastName: String, val userName: String, val email:String,
                    val phoneNr: String, val citizenship:String, val last5yCountry: String, val birthCountry: String,
                    val motherTongue: String)
@@ -55,4 +57,21 @@ data class PossibleAnswer (
 data class User (
     val name: String,
     val address: String
+)
+
+data class VocabWorkList (
+    @SerializedName("wordList")val wordList : List<VocabWord>
+)
+
+data class VocabWord (
+
+    @SerializedName("id") val id : Int,
+    @SerializedName("word") val word : String,
+    @SerializedName("meaning") val meaning : String,
+    @SerializedName("synonym") val synonym : String,
+    @SerializedName("english") val english : String,
+    @SerializedName("pronunciation") val pronunciation : String,
+    @SerializedName("image") val image : String,
+    @SerializedName("createdAt") val createdAt : String,
+    @SerializedName("updatedAt") val updatedAt : String
 )
