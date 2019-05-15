@@ -9,12 +9,19 @@ import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
 import java.net.URL
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_vocabulary.*
+import kotlinx.coroutines.*
+import org.jetbrains.anko.custom.async
+import org.jetbrains.anko.toast
+import java.util.concurrent.TimeUnit
 
 class Vocabulary : AppCompatActivity() {
 
     val donaldVocabURL = "http://192.168.8.100:8000/api/get-weighted-words/1/5"
-    lateinit var vocabQuestionFromDb: List<VocabWord>
-    lateinit var vocabAnswersToDb: List<VocabWord>
+    lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
+    lateinit var vocabAnswersToDb: ArrayList<String>
+    lateinit var currentVordObj: VocabWord
+    lateinit var vocabWordJsonStr: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,22 +29,45 @@ class Vocabulary : AppCompatActivity() {
         setContentView(R.layout.activity_vocabulary)
 
         doAsync {
+            val str = URL(donaldVocabURL).readText()
+            uiThread {
+                vocabQuestionFromDb = parseJSONlist(parseString(str))
 
+                currentVordObj = vocabQuestionFromDb[0]
+                vocab_danish.text = currentVordObj.word
+                vocab_english.text = currentVordObj.english
 
-            val exerciseJsonStr = URL(donaldVocabURL).readText()
-            val JSONlist = parseString(exerciseJsonStr)
+                //while(vocabQuestionFromDb.size > 0){
+                //    currentVordObj = vocabQuestionFromDb[0]
+                //    vocab_danish.text = currentVordObj.word
+                //    vocab_english.text = currentVordObj.english
+                //}
 
-
-            uiThread{
-
-
-                val VocabWordList = parseJSONlist(JSONlist)
-                longToast(VocabWordList.size.toString())
+                longToast("You are done!")
 
 
             }
-
         }
+
+
+        vocab_know.setOnClickListener{
+
+            vocabAnswersToDb.add(currentVordObj.id.toString())
+            vocabAnswersToDb.add("know")
+            vocabAnswersToDb.drop(1)
+            longToast(vocabAnswersToDb.toString())
+        }
+
+        vocab_dontknow.setOnClickListener{
+            vocabAnswersToDb.add(currentVordObj.id.toString())
+            vocabAnswersToDb.add("dontKnow")
+            vocabAnswersToDb.drop(1)
+            longToast(vocabAnswersToDb.toString())
+        }
+
+        longToast("hello")
+
+
 
 
     }
