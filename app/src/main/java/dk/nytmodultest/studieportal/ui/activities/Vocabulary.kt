@@ -27,6 +27,7 @@ class Vocabulary : AppCompatActivity() {
 
     val donaldVocabURL = "http://192.168.8.100:8000/api/get-weighted-words/1/5"
     val donaldPostURL = "http://192.168.8.100:8000/api/studentwords"
+    val studentIDvocabulary = 1
     lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
     val vocabAnswersToDb = ArrayList<String>()
     lateinit var currentVordObj: VocabWord
@@ -77,25 +78,21 @@ class Vocabulary : AppCompatActivity() {
         } else {
             val currentVordObj = questionList[0]
             if (knownWord) {
-                answerList.add(currentVordObj.id.toString())
+                //answerList.add(currentVordObj.id.toString())
+                try {
+                    val gson = Gson()
+                    val myPostObj = postVocabWord(currentVordObj.id, studentIDvocabulary)
+                    val myPostJSON = gson.toJson(myPostObj, postVocabWord::class.java)
+                    httpPostJson(myPostJSON)
+
+                } catch (e: Exception) {
+                    //longToast("Error")
+                }
             }
             questionList.removeAt(0)
             if (questionList.isNullOrEmpty()) {
 
 
-                val url = URL("http://192.168.8.100:8000/api/studentwords");
-                //lateinit var client: URLConnection
-                try {
-
-                    val gson = Gson()
-                    val myPostObj = postVocabWord(6,1)
-                    val myPostJSON = gson.toJson(myPostObj, postVocabWord::class.java)
-
-                    httpPostJson(myPostJSON)
-
-                } catch (e: Exception) {
-                    longToast("Fejl ved database kald")
-                }
 
             } else {
                 val nextVordObj = questionList[0]
@@ -113,7 +110,7 @@ class Vocabulary : AppCompatActivity() {
                 //longToast("virkede det?: " + response.statusCode.toString())
             }
         } catch (e: Exception) {
-            longToast("post forsøg fejlet :(")
+            longToast("database error: your answer didnt react the database")
         } finally {
         }
     }
