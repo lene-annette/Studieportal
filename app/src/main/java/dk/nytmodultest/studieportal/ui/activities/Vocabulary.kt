@@ -25,12 +25,21 @@ class Vocabulary : AppCompatActivity() {
 
 
             val exerciseJsonStr = URL(donaldVocabURL).readText()
+            val parsedList = parseString(exerciseJsonStr)
+
 
             uiThread{
 
 
                 //longToast(exerciseJsonStr)
-                longToast(parseString(exerciseJsonStr))
+                val VocabWordobjects = parseJSON(parsedList)
+                //longToast(parsedList[0])
+                longToast(VocabWordobjects.size.toString())
+
+                //val gson = Gson()
+                //val VW: VocabWord = gson.fromJson(parsedList[0], VocabWord::class.java)
+                //longToast(VW.toString())
+
             }
 
         }
@@ -39,7 +48,18 @@ class Vocabulary : AppCompatActivity() {
     }
 
 
-    fun parseString(rawJSONList: String): String{
+    fun parseJSON(JSONArray: ArrayList<String>): ArrayList<VocabWord> {
+        val gson = Gson()
+        val output = ArrayList<VocabWord>()
+        for (item in JSONArray) {
+            //val output = gson.fromJson(chrJson, VocabWord::class.java)
+            val VWobject = gson.fromJson(item, VocabWord::class.java)
+            output.add(VWobject)
+        }
+        return output
+    }
+
+    fun parseString(rawJSONList: String): ArrayList<String>{
         if (rawJSONList.length > 4) {
             val removeFirstAndLast = rawJSONList.drop(2).dropLast(2)
             val splitJSON = removeFirstAndLast.split("},{")
@@ -48,9 +68,9 @@ class Vocabulary : AppCompatActivity() {
                 val withCurly = "{"+item+"}"
                 addCurly.add(withCurly)
             }
-            return addCurly[0]
+            return addCurly
         } else{
-            return "blank"
+            return ArrayList<String>()
         }
 
 
