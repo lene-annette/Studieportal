@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit
 class Vocabulary : AppCompatActivity() {
 
     val donaldVocabURL = "http://192.168.8.100:8000/api/get-weighted-words/1/5"
+    val donaldPostURL = "http://192.168.8.100:8000/api/studentwords"
     lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
     val vocabAnswersToDb = ArrayList<String>()
     lateinit var currentVordObj: VocabWord
@@ -107,7 +108,7 @@ class Vocabulary : AppCompatActivity() {
 
     fun httpPostJson(JSONbody: String) {
         try {
-            Fuel.post("http://192.168.8.100:8000/api/studentwords")
+            Fuel.post(donaldPostURL)
                 .jsonBody(JSONbody).response { request, response, result ->
                 //longToast("virkede det?: " + response.statusCode.toString())
             }
