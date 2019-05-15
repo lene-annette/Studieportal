@@ -37,20 +37,7 @@ class Vocabulary : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vocabulary)
 
-        doAsync {
-            val str = URL(donaldVocabURL).readText()
-            uiThread {
-                vocabQuestionFromDb = parseJSONlist(parseString(str))
-
-                currentVordObj = vocabQuestionFromDb[0]
-                vocab_danish.text = currentVordObj.word.toString()
-                vocab_english.text = currentVordObj.english
-
-                //longToast("You are done!")
-
-
-            }
-        }
+        getQuestions()
 
 
         vocab_know.setOnClickListener{
@@ -70,11 +57,27 @@ class Vocabulary : AppCompatActivity() {
     }
 
 
-    
+    fun getQuestions(){
+        doAsync {
+            val str = URL(donaldVocabURL).readText()
+            uiThread {
+                vocabQuestionFromDb = parseJSONlist(parseString(str))
+
+                currentVordObj = vocabQuestionFromDb[0]
+                vocab_danish.text = currentVordObj.word.toString()
+                vocab_english.text = currentVordObj.english
+
+                //longToast("You are done!")
+
+
+            }
+        }
+    }
+
 
     fun actionOnQuestion(questionList: ArrayList<VocabWord>, answerList: ArrayList<String>, knownWord: Boolean){
         if (questionList.isNullOrEmpty()) {
-            //longToast(this.vocabAnswersToDb.toString())
+            longToast("Nothing to practice at this moment. Try again later")
         } else {
             val currentVordObj = questionList[0]
             if (knownWord) {
@@ -92,6 +95,7 @@ class Vocabulary : AppCompatActivity() {
             questionList.removeAt(0)
             if (questionList.isNullOrEmpty()) {
 
+                getQuestions()
 
 
             } else {
