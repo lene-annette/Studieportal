@@ -14,8 +14,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.MemoryActivity2">
-        </activity>
         <activity android:name=".ui.activities.MemoryActivity">
         </activity>
         <activity android:name=".ui.activities.UniloginRedirectActivity">
