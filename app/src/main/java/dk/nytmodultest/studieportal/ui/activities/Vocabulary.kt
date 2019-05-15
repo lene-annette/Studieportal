@@ -60,20 +60,25 @@ class Vocabulary : AppCompatActivity() {
     }
 
 
+    
+
     fun actionOnQuestion(questionList: ArrayList<VocabWord>, answerList: ArrayList<String>, action: String){
-        if (!questionList.isNullOrEmpty()) {
+        if (questionList.isNullOrEmpty()) {
+            longToast(this.vocabAnswersToDb.toString())
+        } else {
             val currentVordObj = questionList[0]
             answerList.add(currentVordObj.id.toString())
             answerList.add(action)
             questionList.removeAt(0)
-            val nextVordObj = questionList[0]
-            vocab_danish.text = nextVordObj.word.toString()
-            vocab_english.text = nextVordObj.english
-            longToast(answerList.toString())
-        } else {
-            longToast("array er null eller tom")
+            if (questionList.isNullOrEmpty()) {
+                longToast("array er null eller tom")
+            } else {
+                val nextVordObj = questionList[0]
+                vocab_danish.text = nextVordObj.word.toString()
+                vocab_english.text = nextVordObj.english
+                longToast(answerList.toString())
+            }
         }
-
     }
 
 
