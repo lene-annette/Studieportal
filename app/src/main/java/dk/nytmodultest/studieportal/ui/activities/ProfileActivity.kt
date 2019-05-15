@@ -44,7 +44,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         memoryBtn.setOnClickListener {
-            startActivity(Intent(context, MemoryActivity::class.java))
+            startActivity(Intent(context, MemoryActivity2::class.java))
         }
 
         logoutBtn.setOnClickListener{

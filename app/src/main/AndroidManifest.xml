@@ -3,7 +3,6 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="dk.nytmodultest.studieportal">
 
-
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -15,7 +14,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-
+        <activity android:name=".ui.activities.MemoryActivity2">
+        </activity>
         <activity android:name=".ui.activities.MemoryActivity">
         </activity>
         <activity android:name=".ui.activities.UniloginRedirectActivity">
@@ -23,7 +23,6 @@
         <activity android:name=".ui.activities.UniloginActivity">
         </activity>
         <activity android:name=".ui.activities.ProfileActivity">
-
         </activity>
         <activity android:name=".ui.activities.Listening">
         </activity>
