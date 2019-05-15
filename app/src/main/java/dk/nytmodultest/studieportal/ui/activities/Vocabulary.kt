@@ -29,11 +29,30 @@ class Vocabulary : AppCompatActivity() {
             uiThread{
 
 
-                longToast(exerciseJsonStr)
-                //this@Vocabulary.splitJson(exerciseJsonStr)
+                //longToast(exerciseJsonStr)
+                longToast(parseString(exerciseJsonStr))
             }
 
         }
+
+
+    }
+
+
+    fun parseString(rawJSONList: String): String{
+        if (rawJSONList.length > 4) {
+            val removeFirstAndLast = rawJSONList.drop(2).dropLast(2)
+            val splitJSON = removeFirstAndLast.split("},{")
+            val addCurly = ArrayList<String>()
+            for (item in splitJSON){
+                val withCurly = "{"+item+"}"
+                addCurly.add(withCurly)
+            }
+            return addCurly[0]
+        } else{
+            return "blank"
+        }
+
 
 
     }
