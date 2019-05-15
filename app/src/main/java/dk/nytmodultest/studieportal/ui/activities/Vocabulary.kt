@@ -33,14 +33,8 @@ class Vocabulary : AppCompatActivity() {
                 vocabQuestionFromDb = parseJSONlist(parseString(str))
 
                 currentVordObj = vocabQuestionFromDb[0]
-                vocab_danish.text = currentVordObj.id.toString()
+                vocab_danish.text = currentVordObj.word.toString()
                 vocab_english.text = currentVordObj.english
-
-                //while(vocabQuestionFromDb.size > 0){
-                //    currentVordObj = vocabQuestionFromDb[0]
-                //    vocab_danish.text = currentVordObj.word
-                //    vocab_english.text = currentVordObj.english
-                //}
 
                 longToast("You are done!")
 
@@ -54,6 +48,10 @@ class Vocabulary : AppCompatActivity() {
                 val currentVordObj = vocabQuestionFromDb[0]
                 vocabAnswersToDb.add(currentVordObj.id.toString())
                 vocabAnswersToDb.add("know")
+                vocabQuestionFromDb.removeAt(0)
+                val nextVordObj = vocabQuestionFromDb[0]
+                vocab_danish.text = nextVordObj.word.toString()
+                vocab_english.text = nextVordObj.english
                 longToast(vocabAnswersToDb.toString())
             } else {
                 longToast("array er null eller tom 1")
@@ -65,7 +63,11 @@ class Vocabulary : AppCompatActivity() {
             if (!vocabQuestionFromDb.isNullOrEmpty()) {
                 val currentVordObj = vocabQuestionFromDb[0]
                 vocabAnswersToDb.add(currentVordObj.id.toString())
-                vocabAnswersToDb.add("dontknow")
+                vocabAnswersToDb.add("dont know")
+                vocabQuestionFromDb.removeAt(0)
+                val nextVordObj = vocabQuestionFromDb[0]
+                vocab_danish.text = nextVordObj.word.toString()
+                vocab_english.text = nextVordObj.english
                 longToast(vocabAnswersToDb.toString())
             } else {
                 longToast("array er null eller tom 2")
