@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log.d
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import dk.nytmodultest.studieportal.Config
@@ -18,8 +17,10 @@ import dk.nytmodultest.studieportal.domain.commands.RequestWordsCommand
 import dk.nytmodultest.studieportal.domain.model.Word
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
+import android.media.MediaPlayer
 
 class MemoryActivity2 : AppCompatActivity() {
+    private lateinit var mediaPlayer: MediaPlayer
     var imageViews: MutableList<TextView> = mutableListOf()
     val wordTable = mutableMapOf<String,String>()
     val cards = mutableListOf<String>()
@@ -70,7 +71,7 @@ class MemoryActivity2 : AppCompatActivity() {
         if(src.contains(".png") || src.contains(".jpg")){
             //showImage
             doAsync{
-                val bitmap = Picasso.with(tv.context).load("${Config.BACKEND}/images/$src").get()
+                val bitmap = Picasso.with(tv.context).load("${Config.BACKEND}images/$src").get()
                 uiThread{
                     val d: Drawable = BitmapDrawable(resources,bitmap)
                     tv.background = d
@@ -78,7 +79,14 @@ class MemoryActivity2 : AppCompatActivity() {
             }
         }else if(src.contains(".mp3")){
             //play sound
-            tv.text = src
+            //tv.text = src
+            var mp3Url = "${Config.BACKEND}audio/$src"
+            doAsync{
+                mediaPlayer = MediaPlayer()
+                mediaPlayer.setDataSource(mp3Url)
+                mediaPlayer.prepare()
+                mediaPlayer.start()
+            }
             tv.setBackgroundResource(R.drawable.sound)
         }else{
             tv.text = src
@@ -124,6 +132,7 @@ class MemoryActivity2 : AppCompatActivity() {
             val back = R.drawable.back
             imageViews.forEach {
                 it.setBackgroundResource(back)
+                it.text = ""
             }
         }
         imageViews.forEach{
@@ -142,7 +151,7 @@ class MemoryActivity2 : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setMessage("Game over!")
             builder.setPositiveButton("New Game"){_, _ ->
-                startActivity(Intent(this, MemoryActivity::class.java))
+                startActivity(Intent(this, MemoryActivity2::class.java))
                 finish()
             }
             builder.setNegativeButton("Exit"){_, _ ->

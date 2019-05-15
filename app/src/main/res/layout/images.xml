@@ -18,7 +18,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_12"
                 android:layout_weight="1"
@@ -26,7 +27,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_13"
                 android:layout_weight="1"
@@ -34,7 +36,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_14"
                 android:layout_weight="1"
@@ -42,7 +45,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +61,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_22"
                 android:layout_weight="1"
@@ -65,7 +70,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_23"
                 android:layout_weight="1"
@@ -73,7 +79,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_24"
                 android:layout_weight="1"
@@ -81,7 +88,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -96,7 +104,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_32"
                 android:layout_weight="1"
@@ -104,7 +113,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_33"
                 android:layout_weight="1"
@@ -112,7 +122,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_34"
                 android:layout_weight="1"
@@ -120,7 +131,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -135,7 +147,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_42"
                 android:layout_weight="1"
@@ -143,7 +156,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_43"
                 android:layout_weight="1"
@@ -151,7 +165,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
         <TextView
                 android:id="@+id/iv_44"
                 android:layout_weight="1"
@@ -159,7 +174,8 @@
                 android:background="@drawable/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#000000"/>
     </LinearLayout>
 
 </LinearLayout>
