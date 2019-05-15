@@ -10,24 +10,37 @@
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/vocab_danish"
+            android:layout_height="200dp" android:id="@+id/vocab_danish"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/vocab_english"
+            android:layout_height="200dp" android:id="@+id/vocab_english"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="482dp" android:gravity="bottom">
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/vocab_knowCount" android:layout_weight="1"
+                android:text="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/vocab_dontKCount" android:layout_weight="1"
+                android:text="0"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:gravity="bottom">
         <Button
                 android:text="Kender"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/vocab_know" android:layout_weight="1"/>
+                android:layout_height="match_parent" android:id="@+id/vocab_know" android:layout_weight="1"/>
         <Button
                 android:text="Kender ikke"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/vocab_dontknow" android:layout_weight="1"/>
+                android:layout_height="match_parent" android:id="@+id/vocab_dontknow" android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>

@@ -2,8 +2,6 @@ package dk.nytmodultest.studieportal.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import dk.nytmodultest.studieportal.R
@@ -15,13 +13,7 @@ import java.net.URL
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.domain.model.postVocabWord
 import kotlinx.android.synthetic.main.activity_vocabulary.*
-import kotlinx.coroutines.*
-import org.jetbrains.anko.custom.async
-import org.jetbrains.anko.toast
 import java.lang.Exception
-import java.net.HttpURLConnection
-import java.net.URLConnection
-import java.util.concurrent.TimeUnit
 
 class Vocabulary : AppCompatActivity() {
 
@@ -31,6 +23,8 @@ class Vocabulary : AppCompatActivity() {
     lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
     val vocabAnswersToDb = ArrayList<String>()
     lateinit var currentVordObj: VocabWord
+    var know_count = 0
+    var dontknow_count = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,10 +34,8 @@ class Vocabulary : AppCompatActivity() {
 
         getQuestions()
 
-
         vocab_know.setOnClickListener{
             actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, true)
-
         }
 
         vocab_dontknow.setOnClickListener{
@@ -51,17 +43,8 @@ class Vocabulary : AppCompatActivity() {
         }
 
         vocab_english.setOnClickListener{
-
             vocab_english.text = currentVordObj.english
         }
-
-
-
-        //longToast("hello")
-
-
-
-
     }
 
 
@@ -74,9 +57,6 @@ class Vocabulary : AppCompatActivity() {
                 currentVordObj = vocabQuestionFromDb[0]
                 vocab_danish.text = currentVordObj.word.toString()
                 vocab_english.text = "???"
-
-                //longToast("You are done!")
-
 
             }
         }
@@ -98,19 +78,21 @@ class Vocabulary : AppCompatActivity() {
                 } catch (e: Exception) {
                     //longToast("Error")
                 }
+                know_count += 1
+                vocab_knowCount.text = know_count.toString()
+            }else {
+                dontknow_count += 1
+                vocab_dontKCount.text = dontknow_count.toString()
             }
             questionList.removeAt(0)
             if (questionList.isNullOrEmpty()) {
 
                 getQuestions()
 
-
             } else {
-                //val nextVordObj = questionList[0]
                 this.currentVordObj = questionList[0]
                 vocab_danish.text = this.currentVordObj.word.toString()
                 vocab_english.text = "???"
-                //longToast(answerList.toString())
             }
         }
     }
@@ -151,12 +133,6 @@ class Vocabulary : AppCompatActivity() {
             return ArrayList<String>()
         }
 
-
-
     }
-
-
-
-
 
 }
