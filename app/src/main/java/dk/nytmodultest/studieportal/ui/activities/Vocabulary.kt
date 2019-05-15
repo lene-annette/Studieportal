@@ -19,9 +19,8 @@ class Vocabulary : AppCompatActivity() {
 
     val donaldVocabURL = "http://192.168.8.100:8000/api/get-weighted-words/1/5"
     lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
-    lateinit var vocabAnswersToDb: ArrayList<String>
+    val vocabAnswersToDb = ArrayList<String>()
     lateinit var currentVordObj: VocabWord
-    lateinit var vocabWordJsonStr: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,7 @@ class Vocabulary : AppCompatActivity() {
                 vocabQuestionFromDb = parseJSONlist(parseString(str))
 
                 currentVordObj = vocabQuestionFromDb[0]
-                vocab_danish.text = currentVordObj.word
+                vocab_danish.text = currentVordObj.id.toString()
                 vocab_english.text = currentVordObj.english
 
                 //while(vocabQuestionFromDb.size > 0){
@@ -51,18 +50,26 @@ class Vocabulary : AppCompatActivity() {
 
 
         vocab_know.setOnClickListener{
+            if (!vocabQuestionFromDb.isNullOrEmpty()) {
+                val currentVordObj = vocabQuestionFromDb[0]
+                vocabAnswersToDb.add(currentVordObj.id.toString())
+                vocabAnswersToDb.add("know")
+                longToast(vocabAnswersToDb.toString())
+            } else {
+                longToast("array er null eller tom 1")
+            }
 
-            vocabAnswersToDb.add(currentVordObj.id.toString())
-            vocabAnswersToDb.add("know")
-            vocabAnswersToDb.drop(1)
-            longToast(vocabAnswersToDb.toString())
         }
 
         vocab_dontknow.setOnClickListener{
-            vocabAnswersToDb.add(currentVordObj.id.toString())
-            vocabAnswersToDb.add("dontKnow")
-            vocabAnswersToDb.drop(1)
-            longToast(vocabAnswersToDb.toString())
+            if (!vocabQuestionFromDb.isNullOrEmpty()) {
+                val currentVordObj = vocabQuestionFromDb[0]
+                vocabAnswersToDb.add(currentVordObj.id.toString())
+                vocabAnswersToDb.add("dontknow")
+                longToast(vocabAnswersToDb.toString())
+            } else {
+                longToast("array er null eller tom 2")
+            }
         }
 
         longToast("hello")
