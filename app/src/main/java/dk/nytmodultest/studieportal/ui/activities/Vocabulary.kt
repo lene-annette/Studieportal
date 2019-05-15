@@ -50,6 +50,13 @@ class Vocabulary : AppCompatActivity() {
             actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, false)
         }
 
+        vocab_english.setOnClickListener{
+
+            vocab_english.text = currentVordObj.english
+        }
+
+
+
         //longToast("hello")
 
 
@@ -66,7 +73,7 @@ class Vocabulary : AppCompatActivity() {
 
                 currentVordObj = vocabQuestionFromDb[0]
                 vocab_danish.text = currentVordObj.word.toString()
-                vocab_english.text = currentVordObj.english
+                vocab_english.text = "???"
 
                 //longToast("You are done!")
 
@@ -80,9 +87,8 @@ class Vocabulary : AppCompatActivity() {
         if (questionList.isNullOrEmpty()) {
             longToast("Nothing to practice at this moment. Try again later")
         } else {
-            val currentVordObj = questionList[0]
+            this.currentVordObj = questionList[0]
             if (knownWord) {
-                //answerList.add(currentVordObj.id.toString())
                 try {
                     val gson = Gson()
                     val myPostObj = postVocabWord(currentVordObj.id, studentIDvocabulary)
@@ -100,9 +106,10 @@ class Vocabulary : AppCompatActivity() {
 
 
             } else {
-                val nextVordObj = questionList[0]
-                vocab_danish.text = nextVordObj.word.toString()
-                vocab_english.text = nextVordObj.english
+                //val nextVordObj = questionList[0]
+                this.currentVordObj = questionList[0]
+                vocab_danish.text = this.currentVordObj.word.toString()
+                vocab_english.text = "???"
                 //longToast(answerList.toString())
             }
         }
