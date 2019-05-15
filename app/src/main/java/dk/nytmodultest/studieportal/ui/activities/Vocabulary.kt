@@ -2,6 +2,10 @@ package dk.nytmodultest.studieportal.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.extensions.jsonBody
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.model.VocabWord
 import org.jetbrains.anko.doAsync
@@ -40,7 +44,7 @@ class Vocabulary : AppCompatActivity() {
                 vocab_danish.text = currentVordObj.word.toString()
                 vocab_english.text = currentVordObj.english
 
-                longToast("You are done!")
+                //longToast("You are done!")
 
 
             }
@@ -56,7 +60,7 @@ class Vocabulary : AppCompatActivity() {
             actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, false)
         }
 
-        longToast("hello")
+        //longToast("hello")
 
 
 
@@ -68,7 +72,7 @@ class Vocabulary : AppCompatActivity() {
 
     fun actionOnQuestion(questionList: ArrayList<VocabWord>, answerList: ArrayList<String>, knownWord: Boolean){
         if (questionList.isNullOrEmpty()) {
-            longToast(this.vocabAnswersToDb.toString())
+            //longToast(this.vocabAnswersToDb.toString())
         } else {
             val currentVordObj = questionList[0]
             if (knownWord) {
@@ -86,11 +90,7 @@ class Vocabulary : AppCompatActivity() {
                     val myPostObj = postVocabWord(6,1)
                     val myPostJSON = gson.toJson(myPostObj, postVocabWord::class.java)
 
-
-                    longToast(myPostJSON)
-
-
-
+                    httpPostJson(myPostJSON)
 
                 } catch (e: Exception) {
                     longToast("Fejl ved database kald")
@@ -100,11 +100,22 @@ class Vocabulary : AppCompatActivity() {
                 val nextVordObj = questionList[0]
                 vocab_danish.text = nextVordObj.word.toString()
                 vocab_english.text = nextVordObj.english
-                longToast(answerList.toString())
+                //longToast(answerList.toString())
             }
         }
     }
 
+    fun httpPostJson(JSONbody: String) {
+        try {
+            Fuel.post("http://192.168.8.100:8000/api/studentwords")
+                .jsonBody(JSONbody).response { request, response, result ->
+                //longToast("virkede det?: " + response.statusCode.toString())
+            }
+        } catch (e: Exception) {
+            longToast("post forsøg fejlet :(")
+        } finally {
+        }
+    }
 
     fun parseJSONlist(JSONArray: ArrayList<String>): ArrayList<VocabWord> {
         val gson = Gson()
