@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.activity_vocabulary.*
 import kotlinx.coroutines.*
 import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.toast
+import java.lang.Exception
+import java.net.HttpURLConnection
+import java.net.URLConnection
 import java.util.concurrent.TimeUnit
 
 class Vocabulary : AppCompatActivity() {
@@ -71,7 +74,24 @@ class Vocabulary : AppCompatActivity() {
             answerList.add(action)
             questionList.removeAt(0)
             if (questionList.isNullOrEmpty()) {
-                longToast("array er null eller tom")
+
+
+                val url = URL("http://192.168.8.100:8000/api/studentwords");
+                lateinit var client: URLConnection
+                try {
+
+                    longToast("array er null eller tom")
+
+                    //client = url.openConnection()
+                    //client.setRequestMethod(“POST”);
+                    //client.setRequestProperty("key","value");
+                    //client.setDoOutput(true);
+
+
+                } catch (e: Exception) {
+                    longToast("Fejl ved database kald")
+                }
+
             } else {
                 val nextVordObj = questionList[0]
                 vocab_danish.text = nextVordObj.word.toString()

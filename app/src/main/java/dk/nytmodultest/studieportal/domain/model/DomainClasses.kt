@@ -75,3 +75,11 @@ data class VocabWord (
     @SerializedName("createdAt") val createdAt : String,
     @SerializedName("updatedAt") val updatedAt : String
 )
+
+
+data class postVocabWord (
+
+    @SerializedName("wordId") val wordId : Int,
+    @SerializedName("studentId") val studentId : Int,
+    @SerializedName("knownCounter") val knownCounter : Int
+)
