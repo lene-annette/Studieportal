@@ -44,40 +44,35 @@ class Vocabulary : AppCompatActivity() {
 
 
         vocab_know.setOnClickListener{
-            if (!vocabQuestionFromDb.isNullOrEmpty()) {
-                val currentVordObj = vocabQuestionFromDb[0]
-                vocabAnswersToDb.add(currentVordObj.id.toString())
-                vocabAnswersToDb.add("know")
-                vocabQuestionFromDb.removeAt(0)
-                val nextVordObj = vocabQuestionFromDb[0]
-                vocab_danish.text = nextVordObj.word.toString()
-                vocab_english.text = nextVordObj.english
-                longToast(vocabAnswersToDb.toString())
-            } else {
-                longToast("array er null eller tom 1")
-            }
+            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, "know")
 
         }
 
         vocab_dontknow.setOnClickListener{
-            if (!vocabQuestionFromDb.isNullOrEmpty()) {
-                val currentVordObj = vocabQuestionFromDb[0]
-                vocabAnswersToDb.add(currentVordObj.id.toString())
-                vocabAnswersToDb.add("dont know")
-                vocabQuestionFromDb.removeAt(0)
-                val nextVordObj = vocabQuestionFromDb[0]
-                vocab_danish.text = nextVordObj.word.toString()
-                vocab_english.text = nextVordObj.english
-                longToast(vocabAnswersToDb.toString())
-            } else {
-                longToast("array er null eller tom 2")
-            }
+            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, "dont know")
         }
 
         longToast("hello")
 
 
 
+
+    }
+
+
+    fun actionOnQuestion(questionList: ArrayList<VocabWord>, answerList: ArrayList<String>, action: String){
+        if (!questionList.isNullOrEmpty()) {
+            val currentVordObj = questionList[0]
+            answerList.add(currentVordObj.id.toString())
+            answerList.add(action)
+            questionList.removeAt(0)
+            val nextVordObj = questionList[0]
+            vocab_danish.text = nextVordObj.word.toString()
+            vocab_english.text = nextVordObj.english
+            longToast(answerList.toString())
+        } else {
+            longToast("array er null eller tom")
+        }
 
     }
 
