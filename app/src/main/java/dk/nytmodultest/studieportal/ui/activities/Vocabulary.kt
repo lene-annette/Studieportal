@@ -25,20 +25,15 @@ class Vocabulary : AppCompatActivity() {
 
 
             val exerciseJsonStr = URL(donaldVocabURL).readText()
-            val parsedList = parseString(exerciseJsonStr)
+            val JSONlist = parseString(exerciseJsonStr)
 
 
             uiThread{
 
 
-                //longToast(exerciseJsonStr)
-                val VocabWordobjects = parseJSON(parsedList)
-                //longToast(parsedList[0])
-                longToast(VocabWordobjects.size.toString())
+                val VocabWordList = parseJSONlist(JSONlist)
+                longToast(VocabWordList.size.toString())
 
-                //val gson = Gson()
-                //val VW: VocabWord = gson.fromJson(parsedList[0], VocabWord::class.java)
-                //longToast(VW.toString())
 
             }
 
@@ -48,11 +43,10 @@ class Vocabulary : AppCompatActivity() {
     }
 
 
-    fun parseJSON(JSONArray: ArrayList<String>): ArrayList<VocabWord> {
+    fun parseJSONlist(JSONArray: ArrayList<String>): ArrayList<VocabWord> {
         val gson = Gson()
         val output = ArrayList<VocabWord>()
         for (item in JSONArray) {
-            //val output = gson.fromJson(chrJson, VocabWord::class.java)
             val VWobject = gson.fromJson(item, VocabWord::class.java)
             output.add(VWobject)
         }
