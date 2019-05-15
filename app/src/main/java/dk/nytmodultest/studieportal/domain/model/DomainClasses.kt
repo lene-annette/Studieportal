@@ -80,6 +80,5 @@ data class VocabWord (
 data class postVocabWord (
 
     @SerializedName("wordId") val wordId : Int,
-    @SerializedName("studentId") val studentId : Int,
-    @SerializedName("knownCounter") val knownCounter : Int
+    @SerializedName("studentId") val studentId : Int
 )

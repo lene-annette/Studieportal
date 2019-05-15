@@ -9,6 +9,7 @@ import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
 import java.net.URL
 import com.google.gson.Gson
+import dk.nytmodultest.studieportal.domain.model.postVocabWord
 import kotlinx.android.synthetic.main.activity_vocabulary.*
 import kotlinx.coroutines.*
 import org.jetbrains.anko.custom.async
@@ -47,12 +48,12 @@ class Vocabulary : AppCompatActivity() {
 
 
         vocab_know.setOnClickListener{
-            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, "know")
+            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, true)
 
         }
 
         vocab_dontknow.setOnClickListener{
-            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, "dont know")
+            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, false)
         }
 
         longToast("hello")
@@ -65,27 +66,30 @@ class Vocabulary : AppCompatActivity() {
 
     
 
-    fun actionOnQuestion(questionList: ArrayList<VocabWord>, answerList: ArrayList<String>, action: String){
+    fun actionOnQuestion(questionList: ArrayList<VocabWord>, answerList: ArrayList<String>, knownWord: Boolean){
         if (questionList.isNullOrEmpty()) {
             longToast(this.vocabAnswersToDb.toString())
         } else {
             val currentVordObj = questionList[0]
-            answerList.add(currentVordObj.id.toString())
-            answerList.add(action)
+            if (knownWord) {
+                answerList.add(currentVordObj.id.toString())
+            }
             questionList.removeAt(0)
             if (questionList.isNullOrEmpty()) {
 
 
                 val url = URL("http://192.168.8.100:8000/api/studentwords");
-                lateinit var client: URLConnection
+                //lateinit var client: URLConnection
                 try {
 
-                    longToast("array er null eller tom")
+                    val gson = Gson()
+                    val myPostObj = postVocabWord(6,1)
+                    val myPostJSON = gson.toJson(myPostObj, postVocabWord::class.java)
 
-                    //client = url.openConnection()
-                    //client.setRequestMethod(“POST”);
-                    //client.setRequestProperty("key","value");
-                    //client.setDoOutput(true);
+
+                    longToast(myPostJSON)
+
+
 
 
                 } catch (e: Exception) {
