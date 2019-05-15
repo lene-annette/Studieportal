@@ -17,8 +17,12 @@ import java.lang.Exception
 
 class Vocabulary : AppCompatActivity() {
 
-    val donaldVocabURL = "http://192.168.8.100:8000/api/get-weighted-words/1/5"
-    val donaldPostURL = "http://192.168.8.100:8000/api/studentwords"
+    val DB_URL = "http://192.168.8.100:8000"
+    val getWords_Path = "/api/get-weighted-words/"
+    val postWord_path = "/api/studentwords"
+
+    lateinit var donaldVocabURL: String//"/api/get-weighted-words/1/5"
+    val donaldPostURL = DB_URL + postWord_path
     var studentIDvocabulary = -1
     lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
     val vocabAnswersToDb = ArrayList<String>()
@@ -31,6 +35,8 @@ class Vocabulary : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vocabulary)
         studentIDvocabulary = intent.getStringExtra("username").toInt()
+        donaldVocabURL = DB_URL + getWords_Path + studentIDvocabulary.toString()+ "/5"
+
 
         getQuestions()
 
