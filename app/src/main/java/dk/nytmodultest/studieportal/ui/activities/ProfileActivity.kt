@@ -44,7 +44,10 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         vocabularyBtn.setOnClickListener{
-            startActivity(Intent(this, Vocabulary::class.java))
+            //startActivity(Intent(this, Vocabulary::class.java))
+            intent = Intent(this, Vocabulary::class.java)
+            intent.putExtra("username", ONLINE_USER.toString())
+            startActivity(intent)
         }
 
         memoryBtn.setOnClickListener {

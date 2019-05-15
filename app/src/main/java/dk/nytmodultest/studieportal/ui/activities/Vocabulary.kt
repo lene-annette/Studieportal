@@ -27,7 +27,7 @@ class Vocabulary : AppCompatActivity() {
 
     val donaldVocabURL = "http://192.168.8.100:8000/api/get-weighted-words/1/5"
     val donaldPostURL = "http://192.168.8.100:8000/api/studentwords"
-    val studentIDvocabulary = 1
+    var studentIDvocabulary = -1
     lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
     val vocabAnswersToDb = ArrayList<String>()
     lateinit var currentVordObj: VocabWord
@@ -36,6 +36,7 @@ class Vocabulary : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vocabulary)
+        studentIDvocabulary = intent.getStringExtra("username").toInt()
 
         getQuestions()
 
