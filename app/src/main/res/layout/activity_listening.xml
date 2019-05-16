@@ -7,8 +7,39 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".ui.activities.Listening">
 
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/seekBar" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent">
+        <Button
+                android:text="@string/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/back_audiobtn"
+                android:layout_weight="1"/>
+        <Button
+                android:text="@string/repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_audiobtn"
+                android:layout_weight="1"/>
+        <Button
+                android:text="@string/play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/play_audiobtn"
+                android:layout_weight="1"/>
+        <Button
+                android:text="@string/fwrd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fwrd_audiobtn"
+                android:layout_weight="1"/>
+    </LinearLayout>
     <TextView
-            android:text="Loading..."
+            android:text="@string/loading"
             android:layout_width="286dp"
             android:layout_height="38dp"
             android:id="@+id/activity_listening_instruction"
@@ -45,32 +76,6 @@
             android:id="@+id/seekBar" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/activity_listening_instruction"/>
-    <Button
-            android:text="@string/play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/play_audiobtn" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.81"/>
-    <Button
-            android:text="@string/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/back_audiobtn" app:layout_constraintEnd_toStartOf="@+id/play_audiobtn"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar" app:layout_constraintVertical_bias="0.81"
-            android:layout_marginRight="12dp"/>
-    <Button
-            android:text="@string/fwrd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fwrd_audiobtn" app:layout_constraintStart_toEndOf="@+id/play_audiobtn"
-            android:layout_marginStart="12dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/seekBar"
-            app:layout_constraintVertical_bias="0.81" android:layout_marginLeft="12dp"/>
     <TextView
             android:text="@string/tStart"
             android:layout_width="wrap_content"

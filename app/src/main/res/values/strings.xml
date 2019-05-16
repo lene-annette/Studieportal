@@ -8,4 +8,6 @@
     <string name="fwrd">Fwrd</string>
     <string name="tStart">tStart</string>
     <string name="tEnd">tEnd</string>
+    <string name="loading">Loading...</string>
+    <string name="repeat">repeat</string>
 </resources>

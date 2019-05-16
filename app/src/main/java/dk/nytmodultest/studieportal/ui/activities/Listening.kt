@@ -135,6 +135,11 @@ class Listening : AppCompatActivity(){
 
                 }
 
+                repeat_audiobtn.setOnClickListener{
+                    mediaPlayer.seekTo(0)
+                    mediaPlayer.start()
+                }
+
                 back_audiobtn.setOnClickListener{
                     mediaPlayer.seekTo(barTimeMillis-2000)
                 }
