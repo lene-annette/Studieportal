@@ -42,6 +42,13 @@ class Listening : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listening)
 
+        //back_audiobtn.text = ""
+        back_audiobtn.background = getDrawable(R.drawable.media_backwards_sml)
+        //fwrd_audiobtn.text = ""
+        fwrd_audiobtn.background = getDrawable(R.drawable.media_forward_sml)
+
+
+
         doAsync{
             val result = RequestExerciseCommand("listening",ProfileActivity.ONLINE_USER,"multiple choice",1).execute()
             uiThread {
@@ -100,13 +107,13 @@ class Listening : AppCompatActivity(){
                         }
                         findViewById<TextView>(R.id.seekBarStart).text = displayTime(barTimeMillis)
                         if (mediaPlayer.isPlaying){
-                            play_audiobtn.text = getString(R.string.pause)
+                            //play_audiobtn.text = getString(R.string.pause)
                         }else {
-                            play_audiobtn.text = getString(R.string.play)
+                            //play_audiobtn.text = getString(R.string.play)
                         }
 
                         if ((mediaPlayer.duration-progress)==0) {
-                            play_audiobtn.text = getString(R.string.play)
+                            //play_audiobtn.text = getString(R.string.play)
                             mediaPlayer.seekTo(0)
                         }
 
@@ -129,7 +136,7 @@ class Listening : AppCompatActivity(){
 
                     }else{
                         mediaPlayer.pause()
-                        play_audiobtn.text = getString(R.string.play)
+                        //play_audiobtn.text = getString(R.string.play)
 
                     }
 
