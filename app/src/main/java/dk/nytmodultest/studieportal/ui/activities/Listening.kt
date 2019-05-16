@@ -24,6 +24,8 @@ import org.jetbrains.anko.uiThread
 import java.net.URL
 
 class Listening : AppCompatActivity(){
+
+    private val audio_url = "http://10.0.2.2:8000/audio/lytning_2.mp3"
     private var barTimeMillis = 0
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var seekBar: SeekBar
@@ -68,13 +70,11 @@ class Listening : AppCompatActivity(){
                             finish()
                         }
                     }
-                    //Toast.makeText(this@Listening,listOfClicks,Toast.LENGTH_SHORT).show()
                 }
 
                 //var mp3url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
-
                 //var mp3url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
-                var mp3url: String = "http://10.0.2.2:8000/audio/lytning_2.mp3"  //lytning_2.mp3
+                var mp3url: String = audio_url  //lytning_2.mp3
 
 
                 mediaPlayer = MediaPlayer()
@@ -100,13 +100,13 @@ class Listening : AppCompatActivity(){
                         }
                         findViewById<TextView>(R.id.seekBarStart).text = displayTime(barTimeMillis)
                         if (mediaPlayer.isPlaying){
-                            play_audiobtn.text = "PAUSE"
+                            play_audiobtn.text = getString(R.string.pause)
                         }else {
-                            play_audiobtn.text = "PLAY"
+                            play_audiobtn.text = getString(R.string.play)
                         }
 
                         if ((mediaPlayer.duration-progress)==0) {
-                            play_audiobtn.text = "PLAY"
+                            play_audiobtn.text = getString(R.string.play)
                             mediaPlayer.seekTo(0)
                         }
 
@@ -129,7 +129,7 @@ class Listening : AppCompatActivity(){
 
                     }else{
                         mediaPlayer.pause()
-                        play_audiobtn.text = "PLAY"
+                        play_audiobtn.text = getString(R.string.play)
 
                     }
 

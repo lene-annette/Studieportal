@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_audiobtn"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:textSize="14sp" android:textStyle="bold"/>
         <Button
                 android:text="@string/play"
                 android:layout_width="wrap_content"
