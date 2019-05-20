@@ -1,5 +1,7 @@
 package dk.nytmodultest.studieportal.ui.activities
 
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
@@ -18,6 +20,7 @@ import dk.nytmodultest.studieportal.domain.model.Word
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import android.media.MediaPlayer
+import android.support.v4.content.ContextCompat.startActivity
 
 class MemoryActivity : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
@@ -28,6 +31,8 @@ class MemoryActivity : AppCompatActivity() {
     var firstCard = ""; var secondCard = ""
     lateinit var firstView: TextView; lateinit var secondView: TextView
     var cardNumber = 1
+
+    private lateinit var mSetRightOut: AnimatorSet; private lateinit var mSetLeftIn: AnimatorSet
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +71,9 @@ class MemoryActivity : AppCompatActivity() {
     }
 
     private fun flip(tv: TextView, card: Int){
+        val distance = getCameraDistance()
         val src = cards[card]
+        tv.cameraDistance = distance
 
         if(src.contains(".png") || src.contains(".jpg")){
             //showImage
@@ -93,27 +100,34 @@ class MemoryActivity : AppCompatActivity() {
             tv.setBackgroundResource(android.R.color.transparent)
         }
 
+
+        mSetLeftIn.setTarget(tv)
+        mSetLeftIn.start()
+
+
+
         if(cardNumber == 1){
-            firstCard = src
-            firstView = tv
-            cardNumber = 2
+               firstCard = src
+               firstView = tv
+               cardNumber = 2
 
-            tv.isEnabled = false
+               tv.isEnabled = false
         }else if(cardNumber == 2){
-            secondCard = src
-            secondView = tv
-            cardNumber = 1
+               secondCard = src
+               secondView = tv
+               cardNumber = 1
 
-            imageViews.forEach{
-                it.isEnabled = false
+               imageViews.forEach{
+                   it.isEnabled = false
+               }
+
+                val handler = Handler()
+                handler.postDelayed({
+                    compare()
+                },2000)
             }
-
-            val handler = Handler()
-            handler.postDelayed({
-                compare()
-            },2000)
         }
-    }
+
 
     private fun compare(){
         var key = ""
@@ -130,10 +144,11 @@ class MemoryActivity : AppCompatActivity() {
             checkEnd()
         }else{
             val back = R.drawable.back
-            imageViews.forEach {
-                it.setBackgroundResource(back)
-                it.text = ""
-            }
+
+            firstView.setBackgroundResource(back)
+            firstView.text = ""
+            secondView.setBackgroundResource(back)
+            secondView.text = ""
         }
         imageViews.forEach{
             it.isEnabled = true
@@ -205,11 +220,18 @@ class MemoryActivity : AppCompatActivity() {
             findViewById(R.id.iv_43),
             findViewById(R.id.iv_44)
         )
-
         var i = 0
         imageViews.forEach{
             it.tag = i.toString()
             i++
         }
+
+        mSetRightOut = AnimatorInflater.loadAnimator(this,R.animator.out_animation) as AnimatorSet
+        mSetLeftIn = AnimatorInflater.loadAnimator(this, R.animator.in_animation) as AnimatorSet
+    }
+
+    private fun getCameraDistance(): Float {
+        var distance = 8000
+        return getResources().displayMetrics.density * distance
     }
 }
