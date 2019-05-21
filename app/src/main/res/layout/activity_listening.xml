@@ -9,10 +9,11 @@
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="411dp"
+            android:layout_width="389dp"
             android:layout_height="54dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/seekBar" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -40,21 +41,35 @@
             android:layout_height="38dp"
             android:id="@+id/activity_listening_instruction"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/activity_listening_recyclerView"
+            app:layout_constraintBottom_toTopOf="@+id/activity_listening_nestedscroll"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
     />
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/activity_listening_recyclerView"
+    <android.support.v4.widget.NestedScrollView
+            android:id="@+id/activity_listening_nestedscroll"
             android:layout_width="397dp"
             android:layout_height="378dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.721"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.721"
+            android:layout_marginLeft="8dp">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_listening_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+        />
+
+    </android.support.v4.widget.NestedScrollView>
+
+
 
     <SeekBar
             android:layout_width="368dp"
@@ -80,7 +95,7 @@
             android:orientation="horizontal"
             android:layout_width="395dp"
             android:layout_height="86dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/activity_listening_recyclerView" android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_listening_nestedscroll" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
         <Button

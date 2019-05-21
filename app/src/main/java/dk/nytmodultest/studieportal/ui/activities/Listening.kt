@@ -88,6 +88,8 @@ class Listening : AppCompatActivity(){
                 activity_listening_transcript.setOnClickListener{
                     Toast.makeText(this@Listening,"A transcript of the audio file",Toast.LENGTH_SHORT).show()
 
+
+
                 }
 
                 var mp3url: String = audio_url
