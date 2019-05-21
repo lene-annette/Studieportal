@@ -5,4 +5,8 @@ import dk.nytmodultest.studieportal.domain.model.Word
 
 class WordsProvider(private val source: WordsServer = WordsServer()) {
     fun getWords(studentId:Long, noOfWords: Int): List<Word> = source.getWords(studentId,noOfWords)
+
+    fun submitKnownWord(studentId: Long, wordId: Int){
+        source.submitKnownWord(studentId,wordId)
+    }
 }
