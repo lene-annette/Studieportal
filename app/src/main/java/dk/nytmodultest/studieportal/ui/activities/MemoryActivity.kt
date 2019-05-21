@@ -20,16 +20,17 @@ import dk.nytmodultest.studieportal.domain.model.Word
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import android.media.MediaPlayer
-import android.support.v4.content.ContextCompat.startActivity
 
 class MemoryActivity : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
-    var imageViews: MutableList<TextView> = mutableListOf()
-    val wordTable = mutableMapOf<String,String>()
-    val cards = mutableListOf<String>()
+    var fronts: MutableList<TextView> = mutableListOf()
+    var backs: MutableList<TextView> = mutableListOf()
+    private val wordTable = mutableMapOf<String,String>()
+    private val cards = mutableListOf<String>()
 
     var firstCard = ""; var secondCard = ""
     lateinit var firstView: TextView; lateinit var secondView: TextView
+    lateinit var firstBack: TextView; lateinit var secondBack: TextView
     var cardNumber = 1
 
     private lateinit var mSetRightOut: AnimatorSet; private lateinit var mSetLeftIn: AnimatorSet
@@ -57,7 +58,7 @@ class MemoryActivity : AppCompatActivity() {
                 d("Lene", "cards: $cards")
 
                 init()
-                imageViews.forEach {
+                backs.forEach {
                     it.setOnClickListener{
                         val tv: TextView = it as TextView
                         val card = Integer.parseInt(tv.tag.toString())
@@ -65,23 +66,27 @@ class MemoryActivity : AppCompatActivity() {
                         flip(tv,card)
                     }
                 }
-
             }
         }
     }
 
-    private fun flip(tv: TextView, card: Int){
+    private fun flip(back: TextView, card: Int){
         val distance = getCameraDistance()
         val src = cards[card]
-        tv.cameraDistance = distance
+
+        var front = fronts[card]
+
+        back.cameraDistance = distance
+        front.cameraDistance = distance
+
 
         if(src.contains(".png") || src.contains(".jpg")){
             //showImage
             doAsync{
-                val bitmap = Picasso.with(tv.context).load("${Config.BACKEND}images/$src").get()
+                val bitmap = Picasso.with(front.context).load("${Config.BACKEND}images/$src").get()
                 uiThread{
                     val d: Drawable = BitmapDrawable(resources,bitmap)
-                    tv.background = d
+                    front.background = d
                 }
             }
         }else if(src.contains(".mp3")){
@@ -94,40 +99,43 @@ class MemoryActivity : AppCompatActivity() {
                 mediaPlayer.prepare()
                 mediaPlayer.start()
             }
-            tv.setBackgroundResource(R.drawable.sound)
+            front.setBackgroundResource(R.drawable.sound)
         }else{
-            tv.text = src
-            tv.setBackgroundResource(android.R.color.transparent)
+            front.text = src
+            front.setBackgroundResource(android.R.color.transparent)
         }
 
-
-        mSetLeftIn.setTarget(tv)
+        mSetRightOut.setTarget(back)
+        mSetLeftIn.setTarget(front)
+        mSetRightOut.start()
         mSetLeftIn.start()
 
 
 
         if(cardNumber == 1){
-               firstCard = src
-               firstView = tv
-               cardNumber = 2
+            firstCard = src
+            firstView = front
+            firstBack = back
+            cardNumber = 2
 
-               tv.isEnabled = false
+               front.isEnabled = false
         }else if(cardNumber == 2){
-               secondCard = src
-               secondView = tv
-               cardNumber = 1
+            secondCard = src
+            secondView = front
+            secondBack = back
+            cardNumber = 1
 
-               imageViews.forEach{
-                   it.isEnabled = false
-               }
-
-                val handler = Handler()
-                handler.postDelayed({
-                    compare()
-                },2000)
+            fronts.forEach{
+                it.isEnabled = false
             }
-        }
 
+            val handler = Handler()
+            handler.postDelayed({
+
+                compare()
+            },1000)
+        }
+    }
 
     private fun compare(){
         var key = ""
@@ -140,24 +148,33 @@ class MemoryActivity : AppCompatActivity() {
         if(wordTable[key] == firstCard || wordTable[key] == secondCard){
             firstView.visibility = View.INVISIBLE
             secondView.visibility = View.INVISIBLE
+            firstBack.visibility = View.INVISIBLE
+            secondBack.visibility = View.INVISIBLE
 
             checkEnd()
         }else{
-            val back = R.drawable.back
+            var mOut = AnimatorInflater.loadAnimator(this,R.animator.out_animation) as AnimatorSet
+            var mIn = AnimatorInflater.loadAnimator(this,R.animator.in_animation) as AnimatorSet
 
-            firstView.setBackgroundResource(back)
-            firstView.text = ""
-            secondView.setBackgroundResource(back)
-            secondView.text = ""
+
+            mSetRightOut.setTarget(firstView)
+            mSetLeftIn.setTarget(firstBack)
+            mSetRightOut.start()
+            mSetLeftIn.start()
+
+            mOut.setTarget(secondView)
+            mIn.setTarget(secondBack)
+            mOut.start()
+            mIn.start()
         }
-        imageViews.forEach{
+        fronts.forEach{
             it.isEnabled = true
         }
     }
 
     private fun checkEnd(){
         var end = true
-        imageViews.forEach{
+        fronts.forEach{
             if(it.visibility != View.INVISIBLE){
                 end = false
             }
@@ -202,28 +219,54 @@ class MemoryActivity : AppCompatActivity() {
     }
 
     private fun init(){
-        imageViews = mutableListOf(
-            findViewById(R.id.iv_11),
-            findViewById(R.id.iv_12),
-            findViewById(R.id.iv_13),
-            findViewById(R.id.iv_14),
-            findViewById(R.id.iv_21),
-            findViewById(R.id.iv_22),
-            findViewById(R.id.iv_23),
-            findViewById(R.id.iv_24),
-            findViewById(R.id.iv_31),
-            findViewById(R.id.iv_32),
-            findViewById(R.id.iv_33),
-            findViewById(R.id.iv_34),
-            findViewById(R.id.iv_41),
-            findViewById(R.id.iv_42),
-            findViewById(R.id.iv_43),
-            findViewById(R.id.iv_44)
+        fronts = mutableListOf(
+            findViewById(R.id.iv_11_front),
+            findViewById(R.id.iv_12_front),
+            findViewById(R.id.iv_13_front),
+            findViewById(R.id.iv_14_front),
+            findViewById(R.id.iv_21_front),
+            findViewById(R.id.iv_22_front),
+            findViewById(R.id.iv_23_front),
+            findViewById(R.id.iv_24_front),
+            findViewById(R.id.iv_31_front),
+            findViewById(R.id.iv_32_front),
+            findViewById(R.id.iv_33_front),
+            findViewById(R.id.iv_34_front),
+            findViewById(R.id.iv_41_front),
+            findViewById(R.id.iv_42_front),
+            findViewById(R.id.iv_43_front),
+            findViewById(R.id.iv_44_front)
         )
+
+        backs = mutableListOf(
+            findViewById(R.id.iv_11_back),
+            findViewById(R.id.iv_12_back),
+            findViewById(R.id.iv_13_back),
+            findViewById(R.id.iv_14_back),
+            findViewById(R.id.iv_21_back),
+            findViewById(R.id.iv_22_back),
+            findViewById(R.id.iv_23_back),
+            findViewById(R.id.iv_24_back),
+            findViewById(R.id.iv_31_back),
+            findViewById(R.id.iv_32_back),
+            findViewById(R.id.iv_33_back),
+            findViewById(R.id.iv_34_back),
+            findViewById(R.id.iv_41_back),
+            findViewById(R.id.iv_42_back),
+            findViewById(R.id.iv_43_back),
+            findViewById(R.id.iv_44_back)
+        )
+
         var i = 0
-        imageViews.forEach{
+        fronts.forEach{
             it.tag = i.toString()
             i++
+        }
+
+        var j = 0
+        backs.forEach{
+            it.tag = j.toString()
+            j++
         }
 
         mSetRightOut = AnimatorInflater.loadAnimator(this,R.animator.out_animation) as AnimatorSet

@@ -11,42 +11,90 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_height="match_parent">
-        <TextView
-                android:id="@+id/iv_11"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_12"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_11_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_11_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_13"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_12_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_12_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_14"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_13_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_13_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_14_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_14_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -54,42 +102,90 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_height="match_parent">
-        <TextView
-                android:id="@+id/iv_21"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_22"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_21_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_21_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_23"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_22_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_22_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_24"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_23_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_23_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_24_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_24_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -97,42 +193,90 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_height="match_parent">
-        <TextView
-                android:id="@+id/iv_31"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_32"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_31_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_31_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_33"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_32_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_32_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_34"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_33_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_33_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_34_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_34_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -140,42 +284,90 @@
             android:weightSum="4"
             android:orientation="horizontal"
             android:layout_height="match_parent">
-        <TextView
-                android:id="@+id/iv_41"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_42"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_41_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_41_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_43"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_42_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_42_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        <TextView
-                android:id="@+id/iv_44"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:background="@drawable/back"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_43_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_43_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#000000"/>
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/iv_44_front"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            <TextView
+                    android:id="@+id/iv_44_back"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+        </FrameLayout>
     </LinearLayout>
 
 </LinearLayout>
