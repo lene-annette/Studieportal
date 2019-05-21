@@ -1,6 +1,8 @@
 package dk.nytmodultest.studieportal.ui.activities
 
 //import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
+import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import dk.nytmodultest.studieportal.domain.model.*
 import android.os.AsyncTask
@@ -31,6 +33,7 @@ class Listening : AppCompatActivity(){
     private var barTimeMillis = 0
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var seekBar: SeekBar
+    private lateinit var result: Exercise
 
     private val mSeekbarUpdateHandler = Handler()
     private val mUpdateSeekbar = object : Runnable {
@@ -45,7 +48,7 @@ class Listening : AppCompatActivity(){
         setContentView(R.layout.activity_listening)
 
         doAsync{
-            val result = RequestExerciseCommand("listening",ProfileActivity.ONLINE_USER,"multiple choice",1).execute()
+            result = RequestExerciseCommand("listening",ProfileActivity.ONLINE_USER,"multiple choice",1).execute()
             uiThread {
                 activity_listening_instruction.text = result.studentInstructions
                 val recyclerView = findViewById<RecyclerView>(R.id.activity_listening_recyclerView)
@@ -73,7 +76,12 @@ class Listening : AppCompatActivity(){
                         }
                     }
 
-
+                    val gson = Gson()
+                    val resultToString = gson.toJson(result)
+                    val resultIntent = Intent(this@Listening, Resultpage::class.java)
+                    resultIntent.putExtra("result", resultToString)
+                    resultIntent.putExtra("listOfClicks", listOfClicks)
+                    startActivity(resultIntent)
 
                 }
 
