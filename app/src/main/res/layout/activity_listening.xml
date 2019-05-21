@@ -17,22 +17,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/back_audiobtn"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:src="@drawable/media_backward_sml"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/repeat_audiobtn"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:src="@drawable/media_repeat_sml"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/play_audiobtn"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:src="@drawable/media_play_sml"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/fwrd_audiobtn"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:src="@drawable/media_forward_sml"/>
     </LinearLayout>
     <TextView
             android:text="@string/loading"

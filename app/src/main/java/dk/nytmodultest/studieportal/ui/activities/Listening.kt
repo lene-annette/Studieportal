@@ -25,6 +25,8 @@ import java.net.URL
 
 class Listening : AppCompatActivity(){
 
+    // private val audio_url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
+    // private val audio_url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
     private val audio_url = "http://10.0.2.2:8000/audio/lytning_2.mp3"
     private var barTimeMillis = 0
     private lateinit var mediaPlayer: MediaPlayer
@@ -41,13 +43,6 @@ class Listening : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listening)
-
-        //back_audiobtn.text = ""
-        back_audiobtn.background = getDrawable(R.drawable.media_backwards_sml)
-        //fwrd_audiobtn.text = ""
-        fwrd_audiobtn.background = getDrawable(R.drawable.media_forward_sml)
-
-
 
         doAsync{
             val result = RequestExerciseCommand("listening",ProfileActivity.ONLINE_USER,"multiple choice",1).execute()
@@ -79,9 +74,7 @@ class Listening : AppCompatActivity(){
                     }
                 }
 
-                //var mp3url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
-                //var mp3url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
-                var mp3url: String = audio_url  //lytning_2.mp3
+                var mp3url: String = audio_url
 
 
                 mediaPlayer = MediaPlayer()
@@ -107,13 +100,12 @@ class Listening : AppCompatActivity(){
                         }
                         findViewById<TextView>(R.id.seekBarStart).text = displayTime(barTimeMillis)
                         if (mediaPlayer.isPlaying){
-                            //play_audiobtn.text = getString(R.string.pause)
+                            play_audiobtn.setImageResource(R.drawable.media_pause_sml)
                         }else {
-                            //play_audiobtn.text = getString(R.string.play)
+                            play_audiobtn.setImageResource(R.drawable.media_play_sml)
                         }
-
                         if ((mediaPlayer.duration-progress)==0) {
-                            //play_audiobtn.text = getString(R.string.play)
+                            play_audiobtn.setImageResource(R.drawable.media_play_sml)
                             mediaPlayer.seekTo(0)
                         }
 
@@ -137,6 +129,7 @@ class Listening : AppCompatActivity(){
                     }else{
                         mediaPlayer.pause()
                         //play_audiobtn.text = getString(R.string.play)
+                        play_audiobtn.setImageResource(R.drawable.media_play_sml)
 
                     }
 
@@ -148,11 +141,11 @@ class Listening : AppCompatActivity(){
                 }
 
                 back_audiobtn.setOnClickListener{
-                    mediaPlayer.seekTo(barTimeMillis-2000)
+                    mediaPlayer.seekTo(barTimeMillis-10000)
                 }
 
                 fwrd_audiobtn.setOnClickListener{
-                    mediaPlayer.seekTo(barTimeMillis+2000)
+                    mediaPlayer.seekTo(barTimeMillis+10000)
                 }
 
             }
