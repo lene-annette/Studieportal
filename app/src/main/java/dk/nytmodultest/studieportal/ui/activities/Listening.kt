@@ -18,12 +18,14 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
-import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.commands.RequestExerciseCommand
 import dk.nytmodultest.studieportal.domain.commands.SubmitAnswersCommand
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.net.URL
+import android.R.attr.fragment
+import dk.nytmodultest.studieportal.R
+
 
 class Listening : AppCompatActivity(){
 
@@ -88,6 +90,10 @@ class Listening : AppCompatActivity(){
                 activity_listening_transcript.setOnClickListener{
                     Toast.makeText(this@Listening,"A transcript of the audio file",Toast.LENGTH_SHORT).show()
 
+                    //val manager = supportFragmentManager
+                    //val transaction = manager.beginTransaction()
+                    //transaction.add(, TranscriptFrag)
+                    //transaction.commit()
 
 
                 }
