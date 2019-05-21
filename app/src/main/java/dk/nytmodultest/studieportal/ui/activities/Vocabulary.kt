@@ -25,11 +25,11 @@ class Vocabulary : AppCompatActivity() {
         getWords()
 
         vocab_know.setOnClickListener{
-             actionOnQuestion(true)
+             actionOnWord(true)
         }
 
         vocab_dontknow.setOnClickListener{
-              actionOnQuestion(false)
+              actionOnWord(false)
         }
 
         vocab_english.setOnClickListener{
@@ -49,7 +49,7 @@ class Vocabulary : AppCompatActivity() {
         }
     }
 
-    private fun actionOnQuestion(knownWord: Boolean){
+    private fun actionOnWord(knownWord: Boolean){
         if (words.isNullOrEmpty()) {
             longToast("Nothing to practice at this moment. Try again later")
         } else {
