@@ -2,10 +2,13 @@
     <string name="app_name">Studieportal</string>
     <string name="activity_listening_instruction">activity_listening_instruction</string>
     <string name="confirmbtn">confirmBtn</string>
-    <string name="play">Play</string>
-    <string name="pause">Pause</string>
-    <string name="back">Back</string>
-    <string name="fwrd">Fwrd</string>
+    <string name="play">\u25b6</string>
+    <string name="pause">\u23f8\u0000fe0e</string>
+    <string name="repeat">\u21bb</string>
+    <string name="back">\u25c0\u25c0</string>
+    <string name="fwrd">\u25b6\u25b6</string>
     <string name="tStart">tStart</string>
     <string name="tEnd">tEnd</string>
+    <string name="loading">Loading...</string>
+
 </resources>
