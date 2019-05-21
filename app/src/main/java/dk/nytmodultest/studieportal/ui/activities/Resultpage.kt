@@ -2,6 +2,9 @@ package dk.nytmodultest.studieportal.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
@@ -25,12 +28,34 @@ class Resultpage: AppCompatActivity() {
         }
 
         val textToDisplay = displayResults(correctAnswers, listOfClicks)//correctAnswers.toString() + "\n\n" + listOfClicks.toString()//result + "\n\n" + listOfClicks.toString()
-        findViewById<TextView>(R.id.displayText).text = textToDisplay.toString()
+        //findViewById<TextView>(R.id.displayText).text = textToDisplay.toString()
 
+
+        val recyclerView = findViewById<RecyclerView>(R.id.activity_resultpage_recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this@Resultpage, LinearLayout.VERTICAL, false)
+        val adapter = ResultPageAdapter(textToDisplay, this@Resultpage)
+        recyclerView.adapter = adapter
 
 
 
     }
+
+    /*
+                activity_listening_instruction.text = result.studentInstructions
+                val recyclerView = findViewById<RecyclerView>(R.id.activity_listening_recyclerView)
+                recyclerView.layoutManager = LinearLayoutManager(this@Listening,LinearLayout.VERTICAL, false)
+
+                val questions = ArrayList<Question>()
+                for(q in result.questions){
+                    questions.add(q)
+                }
+
+
+
+                val adapter = ListeningAdapter(questions, this@Listening)
+                recyclerView.adapter = adapter
+
+    */
 
 
 
