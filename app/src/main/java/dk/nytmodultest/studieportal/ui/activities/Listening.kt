@@ -74,7 +74,7 @@ class Listening : AppCompatActivity(){
                     doAsync{
                         SubmitAnswersCommand(ProfileActivity.ONLINE_USER,questions,listOfClicks).execute()
                         uiThread {
-                            Toast.makeText(this@Listening,"Your answers have been submitted",Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(this@Listening,"Your answers have been submitted",Toast.LENGTH_SHORT).show()
                             finish()
                         }
                     }
