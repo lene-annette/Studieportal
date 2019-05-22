@@ -13,10 +13,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log.d
-import android.widget.LinearLayout
-import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.Toast
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.domain.commands.RequestExerciseCommand
 import dk.nytmodultest.studieportal.domain.commands.SubmitAnswersCommand
@@ -24,7 +20,12 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.net.URL
 import android.R.attr.fragment
+import android.support.v4.app.FragmentTransaction
+import android.view.LayoutInflater
+import android.widget.*
 import dk.nytmodultest.studieportal.R
+import kotlinx.android.synthetic.main.popup.*
+import org.jetbrains.anko.alert
 
 
 class Listening : AppCompatActivity(){
@@ -88,14 +89,13 @@ class Listening : AppCompatActivity(){
                 }
 
                 activity_listening_transcript.setOnClickListener{
-                    Toast.makeText(this@Listening,"A transcript of the audio file",Toast.LENGTH_SHORT).show()
 
-                    //val manager = supportFragmentManager
-                    //val transaction = manager.beginTransaction()
-                    //transaction.add(, TranscriptFrag)
-                    //transaction.commit()
-
-
+                    val transcriptField = activity_listening_transText
+                    if (transcriptField.text.length == 0) {
+                        transcriptField.text = result.mediaText
+                    } else {
+                        transcriptField.text = ""
+                    }
                 }
 
                 var mp3url: String = audio_url
