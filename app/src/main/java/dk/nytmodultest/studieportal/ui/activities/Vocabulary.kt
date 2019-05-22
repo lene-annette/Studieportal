@@ -2,6 +2,7 @@ package dk.nytmodultest.studieportal.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
@@ -9,6 +10,7 @@ import org.jetbrains.anko.uiThread
 import dk.nytmodultest.studieportal.domain.commands.RequestWordsCommand
 import dk.nytmodultest.studieportal.domain.commands.SubmitKnownWordCommand
 import dk.nytmodultest.studieportal.domain.model.Word
+
 import kotlinx.android.synthetic.main.activity_vocabulary.*
 
 class Vocabulary : AppCompatActivity() {
@@ -22,6 +24,7 @@ class Vocabulary : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vocabulary)
 
+
         getWords()
 
         vocab_know.setOnClickListener{
@@ -30,6 +33,7 @@ class Vocabulary : AppCompatActivity() {
 
         vocab_dontknow.setOnClickListener{
               actionOnWord(false)
+
         }
 
         vocab_english.setOnClickListener{
@@ -51,6 +55,7 @@ class Vocabulary : AppCompatActivity() {
 
     private fun actionOnWord(knownWord: Boolean){
         if (words.isNullOrEmpty()) {
+
             longToast("Nothing to practice at this moment. Try again later")
         } else {
             if (knownWord) {

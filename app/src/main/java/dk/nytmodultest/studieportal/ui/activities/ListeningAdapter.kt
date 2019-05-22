@@ -1,19 +1,13 @@
 package dk.nytmodultest.studieportal.ui.activities
 
-import android.app.Activity
-import android.support.v7.app.AppCompatActivity
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import android.widget.Toast
 import dk.nytmodultest.studieportal.R
-import dk.nytmodultest.studieportal.domain.model.Exercise
 import dk.nytmodultest.studieportal.domain.model.Question
 
 
@@ -63,19 +57,7 @@ class ListeningAdapter(val questionList: ArrayList<Question>, private val contex
                 else -> "error"
             }
 
-            //d("Lene","setOnCheckedChangeListener, text: $text")
-
-            //answers.add(questionIndex.toInt(),possibilityName)
-
             answers[questionIndex.toInt()] = text.toString()
-
-
-
-
-            //answers.add(questionIndex)
-            //answers.add(possibilityName)
-            //Toast.makeText(context,possibilityName,Toast.LENGTH_SHORT).show()
-            //Toast.makeText(context,"mineSvar: " + answers.size,Toast.LENGTH_SHORT).show()
 
         }
 
@@ -83,7 +65,7 @@ class ListeningAdapter(val questionList: ArrayList<Question>, private val contex
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val radioGroup = itemView.findViewById(R.id.radioGroup) as RadioGroup
-        val textViewQuestions = itemView.findViewById(R.id.textViewQuestion) as TextView
+        val textViewQuestions = itemView.findViewById(R.id.textViewCorrectanswer) as TextView
         val textViewOption1 = itemView.findViewById(R.id.radioButton1) as TextView
         val textViewOption2 = itemView.findViewById(R.id.radioButton2) as TextView
         val textViewOption3 = itemView.findViewById(R.id.radioButton3) as TextView

@@ -2,7 +2,9 @@ package dk.nytmodultest.studieportal.data.server
 
 import android.util.Log.d
 import com.google.gson.Gson
+
 import dk.nytmodultest.studieportal.Config
+
 import dk.nytmodultest.studieportal.domain.model.Exercise
 import dk.nytmodultest.studieportal.domain.model.Question
 import org.json.JSONObject

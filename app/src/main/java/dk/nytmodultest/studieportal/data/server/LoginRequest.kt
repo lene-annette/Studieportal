@@ -1,8 +1,8 @@
 package dk.nytmodultest.studieportal.data.server
 
-import android.util.Log.d
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.Config
+
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -12,7 +12,9 @@ import java.net.URL
 
 class LoginRequest(private val email:String, private val password: String, val gson: Gson = Gson()){
     companion object{
+
         private const val API = Config.API
+
         private const val SRC = "login-student"
         private const val COMPLETE_URL = API + SRC
     }

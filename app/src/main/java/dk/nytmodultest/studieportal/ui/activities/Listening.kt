@@ -1,9 +1,8 @@
 package dk.nytmodultest.studieportal.ui.activities
 
-//import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
+import android.content.Intent
 import android.media.MediaPlayer
 import dk.nytmodultest.studieportal.domain.model.*
-import android.os.AsyncTask
 import kotlinx.android.synthetic.main.activity_listening.*
 import android.os.Bundle
 import android.os.Handler
@@ -11,10 +10,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log.d
-import android.widget.LinearLayout
-import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.Toast
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.Config
 import dk.nytmodultest.studieportal.R
@@ -22,13 +17,17 @@ import dk.nytmodultest.studieportal.domain.commands.RequestExerciseCommand
 import dk.nytmodultest.studieportal.domain.commands.SubmitAnswersCommand
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import java.net.URL
+import android.widget.*
+
 
 class Listening : AppCompatActivity(){
     private val audio_url = "${Config.BACKEND}audio/lytning_2.mp3"
+
+
     private var barTimeMillis = 0
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var seekBar: SeekBar
+    private lateinit var result: Exercise
 
     private val mSeekbarUpdateHandler = Handler()
     private val mUpdateSeekbar = object : Runnable {
@@ -43,7 +42,7 @@ class Listening : AppCompatActivity(){
         setContentView(R.layout.activity_listening)
 
         doAsync{
-            val result = RequestExerciseCommand("listening",ProfileActivity.ONLINE_USER,"multiple choice",1).execute()
+            result = RequestExerciseCommand("listening",ProfileActivity.ONLINE_USER,"multiple choice",1).execute()
             uiThread {
                 activity_listening_instruction.text = result.studentInstructions
                 val recyclerView = findViewById<RecyclerView>(R.id.activity_listening_recyclerView)
@@ -70,11 +69,28 @@ class Listening : AppCompatActivity(){
                             finish()
                         }
                     }
+
+                    val gson = Gson()
+                    val resultToString = gson.toJson(result)
+                    val resultIntent = Intent(this@Listening, Resultpage::class.java)
+                    resultIntent.putExtra("result", resultToString)
+                    resultIntent.putExtra("listOfClicks", listOfClicks)
+                    startActivity(resultIntent)
+
                 }
 
-                var mp3url = "${Config.BACKEND}audio/lytning_2.mp3"  //lytning_2.mp3
+                activity_listening_transcript.setOnClickListener{
+
+                    val transcriptField = activity_listening_transText
+                    if (transcriptField.text.length == 0) {
+                        transcriptField.text = result.mediaText
+                    } else {
+                        transcriptField.text = ""
+                    }
+                }
+
                 mediaPlayer = MediaPlayer()
-                mediaPlayer.setDataSource(mp3url)
+                mediaPlayer.setDataSource(audio_url)
                 mediaPlayer.prepareAsync()
 
                 seekBar = findViewById<SeekBar>(R.id.seekBar)
@@ -124,7 +140,6 @@ class Listening : AppCompatActivity(){
 
                     }else{
                         mediaPlayer.pause()
-                        //play_audiobtn.text = getString(R.string.play)
                         play_audiobtn.setImageResource(R.drawable.media_play_sml)
 
                     }

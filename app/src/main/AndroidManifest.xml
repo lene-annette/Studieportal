@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".ui.activities.Listening">
         </activity>
+        <activity android:name=".ui.activities.Resultpage">
+        </activity>
         <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
