@@ -42,6 +42,10 @@ class Resultpage: AppCompatActivity() {
             startActivity(Intent(this,ProfileActivity::class.java))
         }
 
+        resultpage_nextExercise.setOnClickListener{
+            startActivity(Intent(this,Listening::class.java))
+        }
+
 
     }
 

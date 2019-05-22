@@ -15,19 +15,29 @@
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
     <android.support.v7.widget.RecyclerView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/resultTitle"
+            android:layout_width="394dp"
+            android:layout_height="527dp"
             android:id="@+id/activity_resultpage_recyclerView" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/resultpage_homeBtn"/>
-    <Button
-            android:text="Home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/resultpage_homeBtn" android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resultTitle"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="400dp"
+            android:layout_height="52dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/activity_resultpage_recyclerView">
+        <Button
+                android:text="Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/resultpage_homeBtn" android:layout_weight="1"/>
+        <Button
+                android:text="Next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/resultpage_nextExercise"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
