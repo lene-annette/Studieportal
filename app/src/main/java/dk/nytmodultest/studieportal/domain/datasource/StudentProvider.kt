@@ -7,7 +7,7 @@ import dk.nytmodultest.studieportal.extensions.firstResult
 
 class StudentProvider(private val sources: List<StudentDataSource> = StudentProvider.SOURCES){
     companion object {
-        val SOURCES = listOf(StudentDb(), StudentServer())
+        val SOURCES by lazy{ listOf(StudentDb(), StudentServer())}
     }
 
     fun requestById(id: Long): Student = sources.firstResult{requestSource(it,id) }
