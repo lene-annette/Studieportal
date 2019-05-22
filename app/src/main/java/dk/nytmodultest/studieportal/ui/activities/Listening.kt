@@ -20,6 +20,8 @@ import org.jetbrains.anko.uiThread
 import android.widget.*
 
 
+
+
 class Listening : AppCompatActivity(){
     private val audio_url = "${Config.BACKEND}audio/lytning_2.mp3"
 
@@ -35,6 +37,13 @@ class Listening : AppCompatActivity(){
             seekBar.setProgress(mediaPlayer.getCurrentPosition())
             mSeekbarUpdateHandler.postDelayed(this, 10)
         }
+    }
+
+    public override fun onPause() {
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.stop()
+        }
+        super.onPause()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

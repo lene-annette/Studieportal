@@ -22,12 +22,12 @@
             android:id="@+id/activity_resultpage_recyclerView" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/nextExerciseBtn"/>
+            app:layout_constraintBottom_toTopOf="@+id/resultpage_homeBtn"/>
     <Button
-            android:text="Next Exercise"
+            android:text="Home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nextExerciseBtn" android:layout_marginBottom="24dp"
+            android:id="@+id/resultpage_homeBtn" android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
 </android.support.constraint.ConstraintLayout>

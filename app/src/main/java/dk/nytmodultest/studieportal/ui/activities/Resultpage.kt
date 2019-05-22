@@ -1,5 +1,6 @@
 package dk.nytmodultest.studieportal.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import android.widget.TextView
 import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.model.Exercise
+import kotlinx.android.synthetic.main.activity_resultpage.*
 
 class Resultpage: AppCompatActivity() {
 
@@ -36,9 +38,14 @@ class Resultpage: AppCompatActivity() {
         val adapter = ResultPageAdapter(textToDisplay, this@Resultpage)
         recyclerView.adapter = adapter
 
+        resultpage_homeBtn.setOnClickListener{
+            startActivity(Intent(this,ProfileActivity::class.java))
+        }
 
 
     }
+
+
 
 
     fun displayResults(correctAnswers: ArrayList<String>, listOfClicks: ArrayList<String>):
