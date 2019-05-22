@@ -1,11 +1,8 @@
 package dk.nytmodultest.studieportal.ui.activities
 
-//import dk.nytmodultest.studieportal.domain.commands.RequestStudentCommand
-import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import dk.nytmodultest.studieportal.domain.model.*
-import android.os.AsyncTask
 import kotlinx.android.synthetic.main.activity_listening.*
 import android.os.Bundle
 import android.os.Handler
@@ -18,21 +15,19 @@ import dk.nytmodultest.studieportal.domain.commands.RequestExerciseCommand
 import dk.nytmodultest.studieportal.domain.commands.SubmitAnswersCommand
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import java.net.URL
-import android.R.attr.fragment
-import android.support.v4.app.FragmentTransaction
-import android.view.LayoutInflater
 import android.widget.*
 import dk.nytmodultest.studieportal.R
-import kotlinx.android.synthetic.main.popup.*
-import org.jetbrains.anko.alert
+import dk.nytmodultest.studieportal.domain.datasource.Host
 
 
 class Listening : AppCompatActivity(){
 
     // private val audio_url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
     // private val audio_url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
-    private val audio_url = "http://10.0.2.2:8000/audio/lytning_2.mp3"
+    val DB_URL = Host().currentHostUrl
+    private val audio_url = DB_URL +"/audio/lytning_2.mp3"
+
+
     private var barTimeMillis = 0
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var seekBar: SeekBar
@@ -152,7 +147,6 @@ class Listening : AppCompatActivity(){
 
                     }else{
                         mediaPlayer.pause()
-                        //play_audiobtn.text = getString(R.string.play)
                         play_audiobtn.setImageResource(R.drawable.media_play_sml)
 
                     }

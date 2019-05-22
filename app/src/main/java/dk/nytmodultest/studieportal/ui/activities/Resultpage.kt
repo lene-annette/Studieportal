@@ -40,26 +40,6 @@ class Resultpage: AppCompatActivity() {
 
     }
 
-    /*
-                activity_listening_instruction.text = result.studentInstructions
-                val recyclerView = findViewById<RecyclerView>(R.id.activity_listening_recyclerView)
-                recyclerView.layoutManager = LinearLayoutManager(this@Listening,LinearLayout.VERTICAL, false)
-
-                val questions = ArrayList<Question>()
-                for(q in result.questions){
-                    questions.add(q)
-                }
-
-
-
-                val adapter = ListeningAdapter(questions, this@Listening)
-                recyclerView.adapter = adapter
-
-    */
-
-
-
-
 
     fun displayResults(correctAnswers: ArrayList<String>, listOfClicks: ArrayList<String>):
             ArrayList<ArrayList<String>>{

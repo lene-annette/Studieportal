@@ -57,19 +57,7 @@ class ListeningAdapter(val questionList: ArrayList<Question>, private val contex
                 else -> "error"
             }
 
-            //d("Lene","setOnCheckedChangeListener, text: $text")
-
-            //answers.add(questionIndex.toInt(),possibilityName)
-
             answers[questionIndex.toInt()] = text.toString()
-
-
-
-
-            //answers.add(questionIndex)
-            //answers.add(possibilityName)
-            //Toast.makeText(context,possibilityName,Toast.LENGTH_SHORT).show()
-            //Toast.makeText(context,"mineSvar: " + answers.size,Toast.LENGTH_SHORT).show()
 
         }
 

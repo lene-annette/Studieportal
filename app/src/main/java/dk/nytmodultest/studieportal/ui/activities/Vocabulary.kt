@@ -11,21 +11,22 @@ import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
 import java.net.URL
 import com.google.gson.Gson
+import dk.nytmodultest.studieportal.domain.datasource.Host
 import dk.nytmodultest.studieportal.domain.model.postVocabWord
 import kotlinx.android.synthetic.main.activity_vocabulary.*
 import java.lang.Exception
 
 class Vocabulary : AppCompatActivity() {
 
-    val DB_URL = "http://192.168.8.100:8000"
+    val DB_URL = Host().currentHostUrl//"http://192.168.8.100:8000"
     val getWords_Path = "/api/get-weighted-words/"
     val postWord_path = "/api/studentwords"
+    val numOfVocabTofetch = 5
 
     lateinit var donaldVocabURL: String//"/api/get-weighted-words/1/5"
     val donaldPostURL = DB_URL + postWord_path
     var studentIDvocabulary = -1
     lateinit var vocabQuestionFromDb: ArrayList<VocabWord>
-    val vocabAnswersToDb = ArrayList<String>()
     lateinit var currentVordObj: VocabWord
     var know_count = 0
     var dontknow_count = 0
@@ -35,17 +36,18 @@ class Vocabulary : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vocabulary)
         studentIDvocabulary = intent.getStringExtra("username").toInt()
-        donaldVocabURL = DB_URL + getWords_Path + studentIDvocabulary.toString()+ "/5"
+        //the number "5" below is
+        donaldVocabURL = DB_URL + getWords_Path + studentIDvocabulary.toString()+ "/" +numOfVocabTofetch
 
 
         getQuestions()
 
         vocab_know.setOnClickListener{
-            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, true)
+            actionOnQuestion(vocabQuestionFromDb, true)
         }
 
         vocab_dontknow.setOnClickListener{
-            actionOnQuestion(vocabQuestionFromDb, vocabAnswersToDb, false)
+            actionOnQuestion(vocabQuestionFromDb, false)
         }
 
         vocab_english.setOnClickListener{
@@ -69,7 +71,7 @@ class Vocabulary : AppCompatActivity() {
     }
 
 
-    fun actionOnQuestion(questionList: ArrayList<VocabWord>, answerList: ArrayList<String>, knownWord: Boolean){
+    fun actionOnQuestion(questionList: ArrayList<VocabWord>, knownWord: Boolean){
         if (questionList.isNullOrEmpty()) {
             longToast("Nothing to practice at this moment. Try again later")
         } else {
@@ -103,6 +105,7 @@ class Vocabulary : AppCompatActivity() {
         }
     }
 
+
     fun httpPostJson(JSONbody: String) {
         try {
             Fuel.post(donaldPostURL)
@@ -110,7 +113,7 @@ class Vocabulary : AppCompatActivity() {
                 //longToast("virkede det?: " + response.statusCode.toString())
             }
         } catch (e: Exception) {
-            longToast("database error: your answer didnt react the database")
+            longToast("database error: (Vocabulary.kt): your answer didnt react the database")
         } finally {
         }
     }
