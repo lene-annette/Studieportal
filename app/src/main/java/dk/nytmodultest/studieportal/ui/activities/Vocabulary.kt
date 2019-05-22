@@ -11,14 +11,14 @@ import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
 import java.net.URL
 import com.google.gson.Gson
-import dk.nytmodultest.studieportal.domain.datasource.Host
+import dk.nytmodultest.studieportal.Host
 import dk.nytmodultest.studieportal.domain.model.postVocabWord
 import kotlinx.android.synthetic.main.activity_vocabulary.*
 import java.lang.Exception
 
 class Vocabulary : AppCompatActivity() {
 
-    val DB_URL = Host().currentHostUrl//"http://192.168.8.100:8000"
+    val DB_URL = Host.currentHostUrl//"http://192.168.8.100:8000"
     val getWords_Path = "/api/get-weighted-words/"
     val postWord_path = "/api/studentwords"
     val numOfVocabTofetch = 5

@@ -10,13 +10,13 @@
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="200dp" android:id="@+id/vocab_danish"
+            android:layout_height="227dp" android:id="@+id/vocab_danish"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:textIsSelectable="false"
             android:textStyle="normal" android:gravity="center"/>
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="200dp" android:id="@+id/vocab_english"
+            android:layout_height="221dp" android:id="@+id/vocab_english"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:gravity="center"/>
     <LinearLayout
             android:orientation="horizontal"
@@ -25,23 +25,25 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/vocab_knowCount" android:layout_weight="1"
-                android:text="0"/>
+                android:text="0" android:gravity="center" android:textSize="24sp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/vocab_dontKCount" android:layout_weight="1"
-                android:text="0"/>
+                android:text="0" android:gravity="center" android:textSize="24sp"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:gravity="bottom">
+            android:layout_height="128dp" android:gravity="bottom">
         <Button
                 android:text="Kender"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" android:id="@+id/vocab_know" android:layout_weight="1"/>
+                android:layout_height="wrap_content" android:id="@+id/vocab_know" android:layout_weight="1"
+                android:layout_gravity="center"/>
         <Button
                 android:text="Kender ikke"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" android:id="@+id/vocab_dontknow" android:layout_weight="1"/>
+                android:layout_height="wrap_content" android:id="@+id/vocab_dontknow" android:layout_weight="1"
+                android:layout_gravity="center"/>
     </LinearLayout>
 </LinearLayout>

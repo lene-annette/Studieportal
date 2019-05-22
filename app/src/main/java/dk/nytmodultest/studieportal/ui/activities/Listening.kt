@@ -17,14 +17,14 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import android.widget.*
 import dk.nytmodultest.studieportal.R
-import dk.nytmodultest.studieportal.domain.datasource.Host
+import dk.nytmodultest.studieportal.Host
 
 
 class Listening : AppCompatActivity(){
 
     // private val audio_url: String = "http://10.0.2.2:8000/audio/01-sæ1_du3mo2_track1.mp3"//"localhost:8000/audio/" + myresult.media
     // private val audio_url: String = "http://s1download-universal-soundbank.com/mp3/sounds/9333.mp3"
-    val DB_URL = Host().currentHostUrl
+    val DB_URL = Host.currentHostUrl
     private val audio_url = DB_URL +"/audio/lytning_2.mp3"
 
 
