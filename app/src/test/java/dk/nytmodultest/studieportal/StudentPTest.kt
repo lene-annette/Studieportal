@@ -8,8 +8,8 @@ import org.junit.Assert.assertNotNull
 import org.mockito.Mockito.*
 
 class StudentPTest {
-  @Test
-  fun `data source returns a value`(){
+    @Test
+    fun `data source returns a value`(){
       val ds = mock(StudentDataSource::class.java)
       `when`(ds.requestStudentById(0))
           .then{
@@ -18,6 +18,18 @@ class StudentPTest {
           }
       val provider = StudentProvider(listOf(ds))
       assertNotNull(provider.requestById(0))
+    }
 
-  }
+    @Test
+    fun `empty database returns server value`(){
+        val db = mock(StudentDataSource::class.java)
+        val server = mock(StudentDataSource::class.java)
+        `when`(server.requestStudentById(any(Long::class.java)))
+            .then{
+                Student(0,"john","doe","johndoe", "john@doe.com","",
+                    "earth","","","esperanto")
+            }
+        val provider = StudentProvider(listOf(db,server))
+        assertNotNull(provider.requestById(0))
+    }
 }
