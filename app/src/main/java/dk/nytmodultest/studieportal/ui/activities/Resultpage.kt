@@ -24,12 +24,16 @@ class Resultpage: AppCompatActivity() {
         val gson = Gson()
         val result: Exercise = gson.fromJson(resultString, Exercise::class.java)
 
+        val questionText: ArrayList<String> = ArrayList()
         val correctAnswers: ArrayList<String> = ArrayList()
         for (item in result.questions){
+            questionText.add(item.question)
             correctAnswers.add(item.correctAnswer)
         }
 
-        val textToDisplay = displayResults(correctAnswers, listOfClicks)//correctAnswers.toString() + "\n\n" + listOfClicks.toString()//result + "\n\n" + listOfClicks.toString()
+
+
+        val textToDisplay = displayResults(questionText, correctAnswers, listOfClicks)//correctAnswers.toString() + "\n\n" + listOfClicks.toString()//result + "\n\n" + listOfClicks.toString()
         //findViewById<TextView>(R.id.displayText).text = textToDisplay.toString()
 
 
@@ -49,12 +53,13 @@ class Resultpage: AppCompatActivity() {
 
     }
 
-    fun displayResults(correctAnswers: ArrayList<String>, listOfClicks: ArrayList<String>):
+    fun displayResults(questionText: ArrayList<String>, correctAnswers: ArrayList<String>, listOfClicks: ArrayList<String>):
             ArrayList<ArrayList<String>>{
         val output = ArrayList<ArrayList<String>>()
         for (item in correctAnswers) {
             val eachResult: ArrayList<String> = ArrayList()
             val index = correctAnswers.indexOf(item)
+            eachResult.add(questionText[index])
             if (item == listOfClicks[index]) {
                 eachResult.add(item)
                 eachResult.add(listOfClicks[index])

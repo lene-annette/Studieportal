@@ -8,19 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RadioGroup
 import android.widget.TextView
 import dk.nytmodultest.studieportal.R
-import dk.nytmodultest.studieportal.domain.model.Question
 
 class ResultPageAdapter(val textToDisplay:  ArrayList<ArrayList<String>>, private val context: Context): RecyclerView.Adapter<ResultPageAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
 
         val eachItem = textToDisplay[p1]
-        p0.textViewCorrectanswer.text = eachItem[0]
-        p0.textViewYourAnswer.text = eachItem[1]
-        p0.imageViewCheckmark.setImageResource(eachItem[2].toInt())
+        p0.textViewQuestion.text = eachItem[0]
+        p0.textViewCorrectanswer.text = eachItem[1]
+        p0.textViewYourAnswer.text = eachItem[2]
+        p0.imageViewCheckmark.setImageResource(eachItem[3].toInt())
 
 
 
@@ -38,6 +37,7 @@ class ResultPageAdapter(val textToDisplay:  ArrayList<ArrayList<String>>, privat
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val textViewQuestion = itemView.findViewById(R.id.textViewQuestion) as TextView
         val textViewCorrectanswer = itemView.findViewById(R.id.textViewCorrectanswer) as TextView
         val textViewYourAnswer = itemView.findViewById(R.id.textViewYouranswer) as TextView
         val imageViewCheckmark = itemView.findViewById(R.id.imageViewCheckmark) as ImageView
