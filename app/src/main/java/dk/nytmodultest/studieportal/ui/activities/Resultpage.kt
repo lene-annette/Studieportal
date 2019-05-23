@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import dk.nytmodultest.studieportal.R
 import dk.nytmodultest.studieportal.domain.model.Exercise
 import kotlinx.android.synthetic.main.activity_resultpage.*
+import org.jetbrains.anko.longToast
 
 class Resultpage: AppCompatActivity() {
 
@@ -31,11 +32,9 @@ class Resultpage: AppCompatActivity() {
             correctAnswers.add(item.correctAnswer)
         }
 
-
-
         val textToDisplay = displayResults(questionText, correctAnswers, listOfClicks)//correctAnswers.toString() + "\n\n" + listOfClicks.toString()//result + "\n\n" + listOfClicks.toString()
-        //findViewById<TextView>(R.id.displayText).text = textToDisplay.toString()
-
+        val resultPageTitle = createResultPageTitle(textToDisplay, 1,2)
+        resultTitle.text = resultPageTitle
 
         val recyclerView = findViewById<RecyclerView>(R.id.activity_resultpage_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this@Resultpage, LinearLayout.VERTICAL, false)
@@ -72,6 +71,20 @@ class Resultpage: AppCompatActivity() {
             output.add(eachResult)
         }
         return output
+    }
+
+
+    fun createResultPageTitle(textToDisplay: ArrayList<ArrayList<String>>,
+                              indexOfCorrectAnswer: Int,
+                              indexOfYourAnswer: Int): String{
+        val numOfQuestions = textToDisplay.size
+        var numOfCorrect = 0
+        for (index in textToDisplay.indices) {
+            if (textToDisplay[index][indexOfYourAnswer] == textToDisplay[index][indexOfCorrectAnswer]) {
+                numOfCorrect = numOfCorrect + 1
+            }
+        }
+        return "Result: ${numOfCorrect} out of ${numOfQuestions}"
     }
 
 

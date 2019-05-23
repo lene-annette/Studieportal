@@ -21,8 +21,6 @@ class ResultPageAdapter(val textToDisplay:  ArrayList<ArrayList<String>>, privat
         p0.textViewYourAnswer.text = eachItem[2]
         p0.imageViewCheckmark.setImageResource(eachItem[3].toInt())
 
-
-
     }
 
 
@@ -42,6 +40,5 @@ class ResultPageAdapter(val textToDisplay:  ArrayList<ArrayList<String>>, privat
         val textViewYourAnswer = itemView.findViewById(R.id.textViewYouranswer) as TextView
         val imageViewCheckmark = itemView.findViewById(R.id.imageViewCheckmark) as ImageView
     }
-
 
 }
