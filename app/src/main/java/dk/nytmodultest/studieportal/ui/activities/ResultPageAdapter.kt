@@ -20,9 +20,7 @@ class ResultPageAdapter(val textToDisplay:  ArrayList<ArrayList<String>>, privat
         p0.textViewCorrectanswer.text = eachItem[1]
         p0.textViewYourAnswer.text = eachItem[2]
         p0.imageViewCheckmark.setImageResource(eachItem[3].toInt())
-
     }
-
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.recycleview_resultpage, p0, false)
