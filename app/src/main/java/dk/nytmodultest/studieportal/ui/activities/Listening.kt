@@ -19,9 +19,6 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import android.widget.*
 
-
-
-
 class Listening : AppCompatActivity(){
     private val audio_url = "${Config.BACKEND}audio/lytning_2.mp3"
 
@@ -69,7 +66,6 @@ class Listening : AppCompatActivity(){
 
                 activity_listening_confirmBtn.setOnClickListener{
                     val listOfClicks = (recyclerView.adapter as ListeningAdapter).answers
-                    d("Lene","Listening list of clicks (answers?): $listOfClicks")
 
                     doAsync{
                         SubmitAnswersCommand(ProfileActivity.ONLINE_USER,questions,listOfClicks).execute()
@@ -92,7 +88,7 @@ class Listening : AppCompatActivity(){
 
                     val transcriptField = activity_listening_transText
                     if (transcriptField.text.length == 0) {
-                        transcriptField.text = result.mediaText
+                        transcriptField.text = result.transcript
                     } else {
                         transcriptField.text = ""
                     }

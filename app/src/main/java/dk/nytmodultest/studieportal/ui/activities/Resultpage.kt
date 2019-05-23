@@ -49,9 +49,6 @@ class Resultpage: AppCompatActivity() {
 
     }
 
-
-
-
     fun displayResults(correctAnswers: ArrayList<String>, listOfClicks: ArrayList<String>):
             ArrayList<ArrayList<String>>{
         val output = ArrayList<ArrayList<String>>()

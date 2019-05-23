@@ -12,7 +12,7 @@ data class Exercise (
     val media : String,
     val headline : String,
     val mediaType : String,
-    val mediaText : String,
+    val transcript : String,
     val examType : String,
     val focus : String,
     val examinatorInstructions : String,
